@@ -1,36 +1,70 @@
 .signup-container {
   width: 100%;
-  height: 100vh;
+  height: 100%;
+  padding: 3rem 0;
   position: relative;
   background-color: #ffffff;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  overflow: hidden;
-}
-
-.logo-placeholder {
-  margin-top: 1rem;
 }
 
 .signup-title {
   font-size: 2rem;
   font-weight: 700;
   color: #000000;
-  margin: 4.2rem 0 1.6rem;
+  margin: 4.2rem 0 2rem;
 }
 
 .signup-form {
   width: 30rem;
   display: flex;
   flex-direction: column;
-  gap: 1.7rem;
+  gap: 1rem;
+}
+
+.signup-button {
+  margin-top: 3rem;
+}
+
+.login-link {
+  margin-top: 3rem;
+}
+
+@media screen and (width >= 390px) {
+  .main-signs {
+    justify-content: center;
+  }
+
+  .signup-container {
+    overflow: hidden;
+  }
+  
+  .signup-form {
+    gap: 1.7rem;
+  }
+
+  .signup-button {
+    margin-top: 4rem;
+  }
 }
 
 @media screen and (width >= 768px) {
+  .main-signs {
+    justify-content: center;
+  }
+  
+  .logo-placeholder {
+    margin-top: 3.5rem;
+  }
+
+  .signup-container {
+    padding: 0;
+    overflow: auto;
+  }
+
   .signup-form {
     width: 60rem;
-    gap: 2.5rem;
   }
   
   .signup-title {
@@ -42,27 +76,41 @@
 @media screen and (width >= 1024px) {
   .signup-form {
     width: 80rem;
-    gap: 1rem;
+    gap: 3rem;
   }
 
   .signup-title {
     font-size: 4rem;
     margin: 5.8rem 0 4.2rem;
   }
+
+  .login-link {
+    font-size: 2rem;
+    margin-top: 1rem;
+  }
 }
 
 @media screen and (width >= 1300px) {
+  .signup-container {
+    overflow: hidden;
+  }
+
   .aside-img {
     border-left: 70px solid #3576d3;
   }
 
   .signup-form {
     width: 40rem;
+    gap: 1rem;
   }
 
   .signup-title {
     font-size: 3rem;
     margin: 3.8rem 0 2.2rem;
+  }
+
+  .signup-button {
+    margin-top: 2rem;
   }
 
   .login-link {
