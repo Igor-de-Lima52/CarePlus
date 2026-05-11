@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CarePlus – Prêmios</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles/loja.css" />
+</head>
+<body>
+
+  <!-- ========== BARRA LATERAL ========== -->
+  <aside class="sidebar">
+
+    <div class="logo">
+  <img src="assets/Logo CarePlus Azul.svg" alt="CarePlus" />
+</div>
+
+    <div class="perfil-box">
+      <div class="perfil-avatar">👤</div>
+      <div class="perfil-info">
+        <strong>Bradd Pitt</strong>
+        <span>Membro Gold</span>
+      </div>
+    </div>
+
+    <div class="pontos-box">
+      <span class="pontos-label">⭐ Seus pontos</span>
+      <span class="pontos-valor">3.240 pts</span>
+    </div>
+
+    <div class="separador"></div>
+
+    <nav>
+      <div class="menu-item" onclick="setAtivo(this)"><span class="menu-icone">👤</span><span>Perfil</span></div>
+      <div class="menu-item" onclick="setAtivo(this)"><span class="menu-icone">🏠</span><span>Home</span></div>
+      <div class="menu-item" onclick="setAtivo(this)"><span class="menu-icone">📅</span><span>Agendamentos</span></div>
+      <div class="menu-item ativo" onclick="setAtivo(this)"><span class="menu-icone">🏪</span><span>Prêmios</span></div>
+      <div class="menu-item" onclick="setAtivo(this)"><span class="menu-icone">🏆</span><span>Ranking</span></div>
+    </nav>
+
+    <p class="sidebar-rodape">"Agende, acompanhe e cuide:<br>simples assim."</p>
+
+  </aside>
+
+  <!-- ========== CONTEÚDO PRINCIPAL ========== -->
+  <main class="principal">
+
+    <div class="topbar">
+      <div class="busca-wrap">
+        <span class="busca-icone">🔍</span>
+        <input type="text" id="campoBusca" placeholder="Buscar produto..." oninput="buscarProduto(this.value)" />
+      </div>
+      <div class="topbar-direita">
+        <div class="pontos-topo">⭐ 3.240 pts</div>
+        <button class="btn-sair" onclick="mostrarAviso('Saindo...')">↪ Sair</button>
+      </div>
+    </div>
+
+    <div class="conteudo">
+
+      <!-- Categorias -->
+      <div class="categorias">
+        <button onclick="filtrarCategoria('todos')">
+          <span class="cat-icone">🛍️</span>
+          <div class="cat-texto"><strong>Produtos</strong><small>Ver todos</small></div>
+        </button>
+        <button onclick="filtrarCategoria('cupons')">
+          <span class="cat-icone">🎟️</span>
+          <div class="cat-texto"><strong>Cupons</strong><small>Descontos</small></div>
+        </button>
+        <button onclick="filtrarCategoria('medicamentos')">
+          <span class="cat-icone">💊</span>
+          <div class="cat-texto"><strong>Medicamentos</strong><small>Farmácia</small></div>
+        </button>
+      </div>
+
+      <!-- Oferta do dia -->
+      <section id="sec-oferta">
+        <div class="titulo-secao"><span>🔥 Oferta do dia</span><small>Só hoje!</small></div>
+        <div class="oferta-grid">
+
+          <div class="card-oferta card-destaque" onclick="abrirModal({nome:'Tadalafila 20mg', preco:600, imagem:'assets/tadafila.png', desc:'Medicamento para disfunção erétil. Uso sob prescrição médica.'})">
+            <span class="badge">🔥 Destaque</span>
+            <img src="assets/tadafila.png" alt="Tadalafila 20mg" />
+            <p class="nome">Tadalafila 20mg</p>
+            <p class="desc-card">30 cápsulas · Manipulado</p>
+            <div class="precos">
+              <p class="preco-antigo">1000 pts</p>
+              <p class="preco">600 pts</p>
+            </div>
+            <div class="economia-tag">Economia de 400 pts</div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+
+  <div class="card-oferta card-horizontal" onclick="abrirModal({nome:'Anador 500mg', preco:300, imagem:'assets/Anador.png', desc:'Analgésico e antitérmico. Alivia dores leves a moderadas.'})">
+    <img src="assets/Anador.png" alt="Anador 500mg" />
+    <div class="card-horizontal-info">
+      <p class="nome">Anador 500mg</p>
+      <p class="desc-card">Dipirona · 4 comprimidos</p>
+      <div class="precos">
+        <p class="preco-antigo">500 pts</p>
+        <p class="preco">300 pts</p>
+      </div>
+    </div>
+    <span class="seta">›</span>
+  </div>
+
+  <div class="card-oferta card-horizontal" onclick="abrirModal({nome:'Anador 500mg', preco:300, imagem:'assets/Anador.png', desc:'Analgésico e antitérmico. Alivia dores leves a moderadas.'})">
+    <img src="assets/Anador.png" alt="Anador 500mg" />
+    <div class="card-horizontal-info">
+      <p class="nome">Anador 500mg</p>
+      <p class="desc-card">Dipirona · 4 comprimidos</p>
+      <div class="precos">
+        <p class="preco-antigo">500 pts</p>
+        <p class="preco">300 pts</p>
+      </div>
+    </div>
+    <span class="seta">›</span>
+  </div>
+
+</div>
+      </section>
+
+      <!-- Cupons -->
+      <section id="sec-cupons">
+        <div class="titulo-secao"><span>🎟️ Cupons de Desconto</span><small id="total-cupons"></small></div>
+        <div class="cupons-grid" id="cupons"></div>
+      </section>
+
+      <!-- Produtos -->
+      <section id="sec-produtos">
+        <div class="titulo-secao"><span>💊 Produtos Disponíveis</span><small id="total-produtos"></small></div>
+        <div class="produtos-grid" id="produtos"></div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ========== MODAL ========== -->
+  <div id="modal">
+    <div class="modal-caixa">
+      <div class="modal-img-box">
+        <img id="modal-img" src="" alt="" />
+      </div>
+      <h3 id="modal-nome"></h3>
+      <p id="modal-desc" class="modal-desc"></p>
+      <p id="modal-preco" class="modal-preco"></p>
+      <div class="modal-botoes">
+        <button onclick="fecharModal()">Cancelar</button>
+        <button class="btn-resgatar" onclick="fecharModal(); mostrarAviso('✅ Item resgatado!')">Resgatar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== AVISO ========== -->
+  <div class="toast" id="toast"></div>
+
+  <script src="scripts/loja.js"></script>
+</body>
+</html>
