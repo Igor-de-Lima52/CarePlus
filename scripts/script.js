@@ -56,13 +56,13 @@ function isValidCPF(cpf) {
     let sum = 0;
     for (let i = 0; i < 9; i++) sum += parseInt(digits[i]) * (10 - i);
     let reminder = (sum * 10) % 11;
-    if (reminder === 10) remainder = 0;
+    if (reminder === 10) reminder = 0;
     if (reminder !== parseInt(digits[9])) return false;
 
     sum = 0;
     for (let i = 0; i < 10; i++) sum += parseInt(digits[i]) * (11 - i);
     reminder = (sum * 10) % 11;
-    if (reminder === 10) remainder = 0;
+    if (reminder === 10) reminder = 0;
     return reminder === parseInt(digits[10]);
 }
 
