@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="stylesheet" href="./styles/agendamento.css">
+    <link rel="stylesheet" href="./styles/sidebar.css" />
+    <link rel="stylesheet" href="./styles/topbar.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <title>CarePlus - Agendamentos</title>
+</head>
+
+<body>
+    <!-- ========== BARRA LATERAL ========== -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <img src="assets/Logo CarePlus Azul.svg" alt="CarePlus" />
+        </div>
+
+        <div class="perfil-box">
+            <div class="perfil-avatar">👤</div>
+            <div class="perfil-info">
+                <strong id="user-name">Carregando...</strong>
+                <span id="user-tier">Carregando...</span>
+            </div>
+        </div>
+
+        <div class="pontos-box">
+            <span class="pontos-label">⭐ Seus pontos</span>
+            <span class="pontos-valor" id="user-points">0 pts</span>
+        </div>
+
+        <div class="separador"></div>
+
+        <nav>
+            <div class="menu-item" onclick="setAtivo(this)"><a href="" class="sidebar-link"><span class="menu-icone">👤</span><span>Perfil</span></a></div>
+            <div class="menu-item" onclick="setAtivo(this)"><a href="" class="sidebar-link"><span class="menu-icone">🏠</span><span>Home</span></a></div>
+            <div class="menu-item ativo" onclick="setAtivo(this)"><a href="" class="sidebar-link"><span class="menu-icone">📅</span><span>Agendamentos</span></a></div>
+            <div class="menu-item" onclick="setAtivo(this)"><a href="/loja.html" class="sidebar-link"><span class="menu-icone">🏪</span><span>Prêmios</span></a></div>
+            <div class="menu-item" onclick="setAtivo(this)"><a href="" class="sidebar-link"><span class="menu-icone">🏆</span><span>Ranking</span></a></div>
+        </nav>
+
+        <p class="sidebar-rodape">"Agende, acompanhe e cuide:<br>simples assim."</p>
+
+    </aside>
+
+    <!-- ========== CONTEUDO PRINCIPAL ========== -->
+
+    <main class="principal">
+
+        <div class="topbar">
+            <div class="busca-wrap">
+                <span class="busca-icone">🔍</span>
+                <input type="text" id="campoBusca" placeholder="Buscar consulta..."
+                    oninput="buscarProduto(this.value)" />
+            </div>
+            <div class="topbar-direita">
+                <div class="pontos-topo" id="topbar-points">⭐ 0 pts</div>
+                <button class="btn-sair" onclick="sair()">↪ Sair</button>
+            </div>
+        </div>
+
+        <div class="conteudo">
+
+        <section>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Paciente</th>
+                        <th>Tipo</th>
+                        <th>Data de agendamento</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Marcelo</td>
+                        <td>Checkup</td>
+                        <td>30/10/2001</td>
+                        <td>Marcado</td>
+                    </tr>
+                    <tr>
+                        <td>Igor</td>
+                        <td>Checkup Geral</td>
+                        <td>31/08/2026</td>
+                        <td>Finalizado</td>
+                    </tr>
+                    <tr>
+                        <td>Ali</td>
+                        <td>Cirgurgia</td>
+                        <td>02/09/2026</td>
+                        <td>Pendente</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <div>
+            <button>Marcar consulta</button>
+        </div>
+</body>
+
+</html>
