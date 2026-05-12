@@ -2,6 +2,31 @@
 //  CarePlus - loja.js
 // ==========================================
 
+// ---------- USUÁRIO LOGADO ----------
+
+const currentAccount = getLoggedAccount();
+
+if (!currentAccount) {
+    window.location.href = 'index.html';
+} else {
+    document.getElementById('user-name').textContent = currentAccount.name;
+    document.getElementById('user-points').textContent = currentAccount.pontos.toLocaleString('pt-BR') + ' pts';
+    document.getElementById('topbar-points').textContent = '⭐ ' + currentAccount.pontos.toLocaleString('pt-BR') + ' pts';
+
+    const pontos = currentAccount.pontos;
+    let tier = 'Membro Bronze';
+    if (pontos >= 5000) tier = 'Membro Gold';
+    else if (pontos >= 1000) tier = 'Membro Prata';
+    document.getElementById('user-tier').textContent = tier;
+}
+
+function sair() {
+    clearSession();
+    window.location.href = 'index.html';
+}
+
+let currentItem = null;
+
 // ---------- DADOS ----------
 
 const produtos = [
@@ -66,8 +91,8 @@ cupons.forEach(cupom => {
 
 function filtrarCategoria(categoria) {
   const secProdutos = document.getElementById("sec-produtos");
-  const secCupons   = document.getElementById("sec-cupons");
-  const secOferta   = document.getElementById("sec-oferta");
+  const secCupons  = document.getElementById("sec-cupons");
+  const secOferta  = document.getElementById("sec-oferta");
 
   if (categoria === "todos") {
     secOferta.style.display   = "";
@@ -109,18 +134,42 @@ function buscarProduto(texto) {
 
 // ---------- MODAL ----------
 
-const modal      = document.getElementById("modal");
-const modalImg   = document.getElementById("modal-img");
-const modalNome  = document.getElementById("modal-nome");
-const modalDesc  = document.getElementById("modal-desc");
+const modal = document.getElementById("modal");
+const modalImg = document.getElementById("modal-img");
+const modalNome = document.getElementById("modal-nome");
+const modalDesc = document.getElementById("modal-desc");
 const modalPreco = document.getElementById("modal-preco");
 
 function abrirModal(item) {
-  modalImg.src           = item.imagem;
-  modalNome.textContent  = item.nome;
-  modalDesc.textContent  = item.desc;
+  currentItem = item;
+  modalImg.src = item.imagem;
+  modalNome.textContent = item.nome;
+  modalDesc.textContent = item.desc;
   modalPreco.textContent = item.preco + " pts";
-  modal.style.display    = "flex";
+  modal.style.display = "flex";
+}
+
+function resgatarItem() {
+  if (!currentItem) return;
+
+  const accounts = getAccounts();
+  const account = accounts.find(a => a.email === getSession());
+  if (!account) return;
+
+  if (account.pontos < currentItem.preco) {
+    mostrarAviso('❌ Pontos insuficientes!');
+    fecharModal();
+    return;
+  }
+
+  account.pontos -= currentItem.preco;
+  setCookie('careplus_accounts', accounts, 30);
+
+  document.getElementById('user-points').textContent = account.pontos.toLocaleString('pt-BR') + ' pts';
+  document.getElementById('topbar-points').textContent = '⭐ ' + account.pontos.toLocaleString('pt-BR') + ' pts';
+
+  fecharModal();
+  mostrarAviso('✅ Item resgatado!');
 }
 
 function fecharModal() {

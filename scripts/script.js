@@ -25,21 +25,45 @@ function findAccount(identifier) {
     return accounts.find(a => a.cpf.replace(/\D/g, '') === cleanId || a.email === identifier);
 }
 
+function loginSession(email) {
+    setCookie('careplus_session', email, 1);
+}
+
+function getSession() {
+    return getCookie('careplus_session');
+}
+
+function clearSession() {
+    setCookie('careplus_session', '', -1);
+}
+
+function getLoggedAccount() {
+    const email = getSession();
+    if (!email) return null;
+    const accounts = getAccounts();
+    const account = accounts.find(a => a.email === email) || null;
+    if (account && account.pontos === undefined) {
+        account.pontos = 3240;
+        setCookie('careplus_accounts', accounts, 30);
+    }
+    return account;
+}
+
 function isValidCPF(cpf) {
     const digits = cpf.replace(/\D/g, '');
     if (digits.length !== 11 || /^(\d)\1{10}$/.test(digits)) return false;
 
     let sum = 0;
     for (let i = 0; i < 9; i++) sum += parseInt(digits[i]) * (10 - i);
-    let remainder = (sum * 10) % 11;
-    if (remainder === 10) remainder = 0;
-    if (remainder !== parseInt(digits[9])) return false;
+    let reminder = (sum * 10) % 11;
+    if (reminder === 10) remainder = 0;
+    if (reminder !== parseInt(digits[9])) return false;
 
     sum = 0;
     for (let i = 0; i < 10; i++) sum += parseInt(digits[i]) * (11 - i);
-    remainder = (sum * 10) % 11;
-    if (remainder === 10) remainder = 0;
-    return remainder === parseInt(digits[10]);
+    reminder = (sum * 10) % 11;
+    if (reminder === 10) remainder = 0;
+    return reminder === parseInt(digits[10]);
 }
 
 const signupForm = document.getElementById('signupForm');
@@ -70,7 +94,7 @@ if (signupForm) signupForm.addEventListener('submit', function(e) {
     }
 
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        alert('Email inválido.');
+        alert('Email e/ou senha incorretos.');
         return;
     }
 
@@ -85,11 +109,11 @@ if (signupForm) signupForm.addEventListener('submit', function(e) {
     }
 
     if (password !== passwordConfirm) {
-        alert('As senhas não conferem.');
+        alert('E-mail e/ou senha incorretos.');
         return;
     }
 
-    saveAccount({ name, cpf: cleanCpf, email, password });
+    saveAccount({ name, cpf: cleanCpf, email, password, pontos: 3240 });
     alert('Conta criada com sucesso!');
     window.location.href = './index.html';
 });
@@ -108,15 +132,23 @@ if (loginForm) loginForm.addEventListener('submit', function(e) {
 
     const account = findAccount(cpfEmail);
     if (!account || account.password !== password) {
-        alert('CPF/Email ou senha incorretos.');
+        alert('CPF/Email e/ou senha incorretos.');
         return;
     }
 
-    alert('Login realizado com sucesso!');
+    loginSession(account.email);
+    window.location.href = './loja.html';
 });
 
 const forgotPwd = document.querySelector('.forgot-password');
 if (forgotPwd) forgotPwd.addEventListener('click', function(e) {
     e.preventDefault();
-    alert('Funcionalidade de recuperação de senha em desenvolvimento.');
+    const identifier = prompt('Informe seu CPF ou email para recuperar a senha:');
+    if (!identifier) return;
+    const account = findAccount(identifier);
+    if (account) {
+        alert('Sua senha é: ' + account.password + '\nRecomendamos alterá-la após o login.');
+    } else {
+        alert('Conta não encontrada. Verifique o CPF ou email informado.');
+    }
 });

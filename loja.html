@@ -19,14 +19,14 @@
     <div class="perfil-box">
       <div class="perfil-avatar">👤</div>
       <div class="perfil-info">
-        <strong>Bradd Pitt</strong>
-        <span>Membro Gold</span>
+        <strong id="user-name">Carregando...</strong>
+        <span id="user-tier">Carregando...</span>
       </div>
     </div>
 
     <div class="pontos-box">
       <span class="pontos-label">⭐ Seus pontos</span>
-      <span class="pontos-valor">3.240 pts</span>
+      <span class="pontos-valor" id="user-points">0 pts</span>
     </div>
 
     <div class="separador"></div>
@@ -52,8 +52,8 @@
         <input type="text" id="campoBusca" placeholder="Buscar produto..." oninput="buscarProduto(this.value)" />
       </div>
       <div class="topbar-direita">
-        <div class="pontos-topo">⭐ 3.240 pts</div>
-        <button class="btn-sair" onclick="mostrarAviso('Saindo...')">↪ Sair</button>
+        <div class="pontos-topo" id="topbar-points">⭐ 0 pts</div>
+        <button class="btn-sair" onclick="sair()">↪ Sair</button>
       </div>
     </div>
 
@@ -149,7 +149,7 @@
       <p id="modal-preco" class="modal-preco"></p>
       <div class="modal-botoes">
         <button onclick="fecharModal()">Cancelar</button>
-        <button class="btn-resgatar" onclick="fecharModal(); mostrarAviso('✅ Item resgatado!')">Resgatar</button>
+        <button class="btn-resgatar" onclick="resgatarItem()">Resgatar</button>
       </div>
     </div>
   </div>
@@ -157,6 +157,7 @@
   <!-- ========== AVISO ========== -->
   <div class="toast" id="toast"></div>
 
+  <script src="scripts/script.js"></script>
   <script src="scripts/loja.js"></script>
 </body>
 </html>
