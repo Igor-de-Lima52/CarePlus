@@ -46,7 +46,7 @@
 
     </aside>
 
-    <!-- ========== CONTEUDO PRINCIPAL ========== -->
+    <!-- ========== Barra de Cima ========== -->
 
     <main class="principal">
 
@@ -62,44 +62,93 @@
             </div>
         </div>
 
-        <div class="conteudo">
+    <!-- ========== CONTEUDO PRINCIPAL ========== -->
+        <main class="conteudo">
+            <section>
+                <table class="tabela">
+                    <thead class="tabela-titulo">
+                        <tr>
+                            <th>Paciente</th>
+                            <th>Tipo</th>
+                            <th>Data de agendamento</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tabela-linha">
+                        <tr>
+                            <td>Marcelo</td>
+                            <td>Checkup</td>
+                            <td>30/10/2001</td>
+                            <td>Marcado</td>
+                            <td>
+                                <button class="btn cancelar" onclick="abrirModalOpcoes('Marcelo')">
+                                    <span class="cat-icone">❌</span>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Igor</td>
+                            <td>Checkup Geral</td>
+                            <td>31/08/2026</td>
+                            <td>Finalizado</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Ali</td>
+                            <td>Cirurgia</td>
+                            <td>02/09/2026</td>
+                            <td>Pendente</td>
+                            <td>
+                                <button class="btn cancelar" onclick="abrirModalOpcoes('Ali')">
+                                    <span class="cat-icone">❌</span>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
 
-        <section>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Paciente</th>
-                        <th>Tipo</th>
-                        <th>Data de agendamento</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Marcelo</td>
-                        <td>Checkup</td>
-                        <td>30/10/2001</td>
-                        <td>Marcado</td>
-                    </tr>
-                    <tr>
-                        <td>Igor</td>
-                        <td>Checkup Geral</td>
-                        <td>31/08/2026</td>
-                        <td>Finalizado</td>
-                    </tr>
-                    <tr>
-                        <td>Ali</td>
-                        <td>Cirgurgia</td>
-                        <td>02/09/2026</td>
-                        <td>Pendente</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <div>
-            <button>Marcar consulta</button>
+            <div id="ajuste-btn-marcar">
+                <button class="btn marcar" onclick="abrirModalMarcarConsulta">Marcar consulta</button>
+            </div>
+        </main>
+        
+        <!-- ========== Modal Ações ========== -->
+        <div id="modalOpcoes" class="modal-overlay" style="display: none;">
+            <div class="modal-caixa">
+                <h3>Opções de Agendamento</h3>
+                <p>Deseja remarcar ou cancelar a consulta de <strong id="nomePaciente"></strong>?</p>
+                
+                <div class="modal-botoes-coluna">
+                    <button class="btn-resgatar" onclick="confirmarAcao('remarcar')">📅 Remarcar</button>
+                    <button class="btn-cancelar-modal" onclick="confirmarAcao('cancelar')">❌ Cancelar</button>
+                    <button class="btn-voltar" onclick="fecharModal()">Voltar</button>
+                </div>
+            </div>
         </div>
+        <!-- ========== Modal Marcar Consulta ========== -->
+        <div id="modalMarcarConsulta" class="modal-overlay" style="display: none;">
+            <div class="modal-caixa">
+                <h3>Opções de Agendamento</h3>
+                <p>Deseja remarcar ou cancelar a consulta de <strong id="nomePaciente"></strong>?</p>
+                
+                <div class="modal-botoes-coluna">
+                    <button class="btn-resgatar" onclick="confirmarAcao('remarcar')">📅 Remarcar</button>
+                    <button class="btn-cancelar-modal" onclick="confirmarAcao('cancelar')">❌ Cancelar</button>
+                    <button class="btn-voltar" onclick="fecharModal()">Voltar</button>
+                </div>
+            </div>
+        </div>
+
+        <script src="./scripts/agendamentos.js"></script>
+    </body>
+    </html>
+
+        
+    </main>
+
+    
 </body>
 
 </html>

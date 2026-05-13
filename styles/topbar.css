@@ -28,6 +28,7 @@ body {
 }
 
 .principal {
+  display: flex;
   margin-left: 215px;
   flex: 1;
   display: flex;
@@ -94,6 +95,13 @@ body {
   transition: background 0.2s;
 }
 
-.btn-sair:hover { background: var(--azul-escuro); }
+.btn-sair:hover { background: var(--azul-escuro); transform: scale(1.1); }
 
-.conteudo { padding: 24px; display: flex; flex-direction: column; gap: 28px; }
+.conteudo { 
+  height: 100%;
+  padding: 24px; 
+  display: flex; 
+  flex-direction: column; 
+  gap: 28px; 
+  justify-content: space-between;
+}
