@@ -9,41 +9,10 @@
 </head>
 <body>
 
-========== BARRA LATERAL ==========
-  <aside class="sidebar">
+<!-- ========== BARRA LATERAL ========== -->
+  <div id="sidebar-container"></div>
 
-    <div class="logo">
-  <img src="assets/Logo CarePlus Azul.svg" alt="CarePlus" />
-</div>
-
-    <div class="perfil-box">
-      <div class="perfil-avatar">👤</div>
-      <div class="perfil-info">
-        <strong id="user-name">Carregando...</strong>
-        <span id="user-tier">Carregando...</span>
-      </div>
-    </div>
-
-    <div class="pontos-box">
-      <span class="pontos-label">⭐ Seus pontos</span>
-      <span class="pontos-valor" id="user-points">0 pts</span>
-    </div>
-
-    <div class="separador"></div>
-
-    <nav>
-      <div class="menu-item" onclick="setAtivo(this)"><span class="menu-icone">👤</span><span>Perfil</span></div>
-      <div class="menu-item" onclick="setAtivo(this)"><span class="menu-icone">🏠</span><span>Home</span></div>
-      <div class="menu-item" onclick="setAtivo(this)"><span class="menu-icone">📅</span><span>Agendamentos</span></div>
-      <div class="menu-item ativo" onclick="setAtivo(this)"><span class="menu-icone">🏪</span><span>Prêmios</span></div>
-      <div class="menu-item" onclick="setAtivo(this)"><span class="menu-icone">🏆</span><span>Ranking</span></div>
-    </nav>
-
-    <p class="sidebar-rodape">"Agende, acompanhe e cuide:<br>simples assim."</p>
-
-  </aside>
-
- ========== CONTEÚDO PRINCIPAL ==========
+ <!-- ========== CONTEÚDO PRINCIPAL ========== -->
   <main class="principal">
 
     <div class="topbar">
@@ -59,7 +28,7 @@
 
     <div class="conteudo">
 
-      -- Categorias --
+      <!-- -- Categorias -- -->
       <div class="categorias">
         <button onclick="filtrarCategoria('todos')">
           <span class="cat-icone">🛍️</span>
@@ -75,7 +44,7 @@
         </button>
       </div>
 
-     -- Oferta do dia --
+     <!-- -- Oferta do dia -- -->
       <section id="sec-oferta">
         <div class="titulo-secao"><span>🔥 Oferta do dia</span><small>Só hoje!</small></div>
         <div class="oferta-grid">
@@ -123,13 +92,13 @@
 </div>
       </section>
 
-      -- Cupons --
+      <!-- -- Cupons -- -->
       <section id="sec-cupons">
         <div class="titulo-secao"><span>🎟️ Cupons de Desconto</span><small id="total-cupons"></small></div>
         <div class="cupons-grid" id="cupons"></div>
       </section>
 
-     -- Produtos --
+     <!-- -- Produtos -- -->
       <section id="sec-produtos">
         <div class="titulo-secao"><span>💊 Produtos Disponíveis</span><small id="total-produtos"></small></div>
         <div class="produtos-grid" id="produtos"></div>
@@ -138,7 +107,7 @@
     </div>
   </main>
 
-  ========== MODAL ==========
+  <!-- ========== MODAL ========== -->
   <div id="modal">
     <div class="modal-caixa">
       <div class="modal-img-box">
@@ -154,9 +123,11 @@
     </div>
   </div>
 
-========== AVISO ==========
+<!-- ========== AVISO ========== -->
   <div class="toast" id="toast"></div>
 
+  <script src="scripts/auth.js"></script>
+  <script src="scripts/sidebar.js"></script>
   <script src="scripts/script.js"></script>
   <script src="scripts/loja.js"></script>
 </body>

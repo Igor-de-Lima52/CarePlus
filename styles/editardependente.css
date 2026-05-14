@@ -1,0 +1,183 @@
+:root {
+  --azul-perfil: #0079c8;
+  --input-bg: #e8ebef;
+  font-size: 62.5%;
+}
+
+
+.conteudo-perfil {
+  width: 40%;
+  padding: 3.2rem 4rem;
+  margin: 8rem auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  align-items: center;
+}
+
+.perfil-header {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.perfil-foto .avatar-placeholder {
+  width: 6rem;
+  height: 6rem;
+  background: var(--input-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  border: 1px solid #000;
+  flex-shrink: 0;
+}
+
+.perfil-nome-plano h2 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #000;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.perfil-nome-plano span {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #000;
+  display: block;
+  margin-top: 0.4rem;
+}
+
+
+.form-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #000;
+  margin: 0;
+}
+
+
+.form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  width: 100%;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #000;
+}
+
+.form-group input {
+  width: 100%;
+  height: 5rem;
+  padding: 0 1.6rem;
+  border: 1px solid #000;
+  border-radius: 6px;
+  background: var(--input-bg);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.4rem;
+  color: #000;
+  opacity: 0.6;
+  outline: none;
+  transition: border-color 0.2s, opacity 0.2s;
+}
+
+.form-group select {
+  width: 100%;
+  height: 5rem;
+  padding: 0 1.6rem;
+  border: 1px solid #000;
+  border-radius: 6px;
+  background: var(--input-bg);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.4rem;
+  color: #000;
+  opacity: 0.6;
+  outline: none;
+  cursor: pointer;
+  appearance: auto;
+}
+
+.form-group select:focus {
+  border: 2px solid var(--azul-perfil);
+  opacity: 1;
+}
+
+.form-group input:focus {
+  border: 2px solid var(--azul-perfil);
+  opacity: 1;
+}
+
+.form-row {
+  display: flex;
+  gap: 2rem;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+
+.form-actions {
+  width: 100%;
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.btn-editar {
+  width: 100%;
+  height: 50px;
+  background: var(--azul-perfil);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0px 4px 3.5px rgba(0, 0, 0, 0.25);
+  transition: background 0.2s, transform 0.1s;
+}
+
+.btn-editar:hover {
+  background: #005fa3;
+}
+
+.btn-editar:active {
+  transform: scale(0.98);
+}
+
+.btn-cancelar {
+  width: 100%;
+  height: 50px;
+  background: #fff;
+  color: var(--azul-perfil);
+  border: none;
+  border-radius: 6px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0px 4px 3.5px rgba(0, 0, 0, 0.25);
+  transition: background 0.2s, transform 0.1s;
+}
+
+.btn-cancelar:hover {
+  background: #f5f5f5;
+}
+
+.btn-cancelar:active {
+  transform: scale(0.98);
+}
