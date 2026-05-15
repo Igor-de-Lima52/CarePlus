@@ -5,18 +5,20 @@
     <link rel="stylesheet" href="./styles/agendamento.css">
     <link rel="stylesheet" href="./styles/sidebar.css" />
     <link rel="stylesheet" href="./styles/topbar.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
     <title>CarePlus - Agendamentos</title>
 </head>
 
 <body>
-    <!-- ========== BARRA LATERAL ========== -->
     <aside class="sidebar">
 
         <div class="logo">
             <img src="assets/Logo CarePlus Azul.svg" alt="CarePlus" />
+            <button class="btn-fechar-sidebar" onclick="toggleSidebar()">✕</button>
         </div>
 
         <div class="perfil-box">
@@ -46,11 +48,12 @@
 
     </aside>
 
-    <!-- ========== Barra de Cima ========== -->
+
 
     <main class="principal">
 
         <div class="topbar">
+            <button class="btn-menu-mobile" onclick="toggleSidebar()">☰</button>
             <div class="busca-wrap">
                 <span class="busca-icone">🔍</span>
                 <input type="text" id="campoBusca" placeholder="Buscar consulta..."
@@ -62,59 +65,32 @@
             </div>
         </div>
 
-    <!-- ========== CONTEUDO PRINCIPAL ========== -->
-        <main class="conteudo">
+
+        <div class="conteudo">
             <section>
                 <table class="tabela">
                     <thead class="tabela-titulo">
                         <tr>
                             <th>Paciente</th>
-                            <th>Tipo</th>
-                            <th>Data de agendamento</th>
+                            <th>Especialidade</th>
+                            <th>Médico</th>
+                            <th>Data</th>
                             <th>Status</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
                     <tbody class="tabela-linha">
-                        <tr>
-                            <td>Marcelo</td>
-                            <td>Checkup</td>
-                            <td>30/10/2001</td>
-                            <td>Marcado</td>
-                            <td>
-                                <button class="btn cancelar" onclick="abrirModalOpcoes('Marcelo')">
-                                    <span class="cat-icone">❌</span>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Igor</td>
-                            <td>Checkup Geral</td>
-                            <td>31/08/2026</td>
-                            <td>Finalizado</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>Ali</td>
-                            <td>Cirurgia</td>
-                            <td>02/09/2026</td>
-                            <td>Pendente</td>
-                            <td>
-                                <button class="btn cancelar" onclick="abrirModalOpcoes('Ali')">
-                                    <span class="cat-icone">❌</span>
-                                </button>
-                            </td>
-                        </tr>
+
                     </tbody>
                 </table>
             </section>
 
             <div id="ajuste-btn-marcar">
-                <button class="btn marcar" onclick="abrirModalMarcarConsulta">Marcar consulta</button>
+                <button class="btn marcar" onclick="abrirModalMarcarConsulta()">Marcar consulta</button>
             </div>
-        </main>
+        </div>
         
-        <!-- ========== Modal Ações ========== -->
+
         <div id="modalOpcoes" class="modal-overlay" style="display: none;">
             <div class="modal-caixa">
                 <h3>Opções de Agendamento</h3>
@@ -123,32 +99,66 @@
                 <div class="modal-botoes-coluna">
                     <button class="btn-resgatar" onclick="confirmarAcao('remarcar')">📅 Remarcar</button>
                     <button class="btn-cancelar-modal" onclick="confirmarAcao('cancelar')">❌ Cancelar</button>
-                    <button class="btn-voltar" onclick="fecharModal()">Voltar</button>
+                    <button class="btn-voltar" onclick="fecharModalOpcoes()">Voltar</button>
                 </div>
             </div>
         </div>
-        <!-- ========== Modal Marcar Consulta ========== -->
+
         <div id="modalMarcarConsulta" class="modal-overlay" style="display: none;">
             <div class="modal-caixa">
-                <h3>Opções de Agendamento</h3>
-                <p>Deseja remarcar ou cancelar a consulta de <strong id="nomePaciente"></strong>?</p>
-                
-                <div class="modal-botoes-coluna">
-                    <button class="btn-resgatar" onclick="confirmarAcao('remarcar')">📅 Remarcar</button>
-                    <button class="btn-cancelar-modal" onclick="confirmarAcao('cancelar')">❌ Cancelar</button>
-                    <button class="btn-voltar" onclick="fecharModal()">Voltar</button>
+                <div class="fechar">
+                    <h3>Novo Agendamento</h3>
+                    <button class="btn-fechar-icone" onclick="fecharModalMarcarConsulta()">✕</button>
                 </div>
+                
+                <form id="formAgendamento">
+                    <div class="campo-selecao-customizado">
+                        <label>Paciente</label>
+                        <input type="text" id="paciente-input" placeholder="Pesquisar paciente..." autocomplete="off"> 
+                        <ul id="paciente-lista" class="lista-dropdown oculta"></ul>
+                    </div>
+
+                    <div class="campo-selecao-customizado">
+                        <label>Especialidade</label>
+                        <input type="text" id="especialidade-input" placeholder="Selecione a especialidade..." autocomplete="off"> 
+                        <ul id="especialidade-lista" class="lista-dropdown oculta"></ul>
+                    </div>
+
+                    <div class="campo-selecao-customizado">
+                        <label>Clínica</label>
+                        <input type="text" id="clinica-input" placeholder="Selecione a unidade..." autocomplete="off"> 
+                        <ul id="clinica-lista" class="lista-dropdown oculta"></ul>
+                    </div>
+
+                    <div class="campo-selecao-customizado">
+                        <label>Data Disponível</label>
+                        <input type="text" id="data-input" placeholder="Escolha o dia..." autocomplete="off"> 
+                        <ul id="data-lista" class="lista-dropdown oculta"></ul>
+                    </div>
+
+                    <div class="campo-selecao-customizado">
+                        <label>Médico</label>
+                        <input type="text" id="medico-input" placeholder="Selecione o profissional..." autocomplete="off"> 
+                        <ul id="medico-lista" class="lista-dropdown oculta"></ul>
+                    </div>
+
+                    <div class="modal-rodape">
+                        <button type="button" class="btn-secundario" onclick="fecharModalMarcarConsulta()">Cancelar</button>
+                        <button type="button" class="btn-primario" onclick="salvarAgendamento()">Confirmar Agendamento</button>
+                    </div>
+                </form>
             </div>
         </div>
 
-        <script src="./scripts/agendamentos.js"></script>
-    </body>
-    </html>
-
-        
-    </main>
-
-    
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/pt.js"></script>
+    <script src="./scripts/objetosmockados.js"></script>
+    <script src="./scripts/agendamentos.js"></script>
+    <script>
+        function toggleSidebar() {
+            document.querySelector('.sidebar').classList.toggle('aberto');
+        }
+    </script>
 </body>
 
 </html>

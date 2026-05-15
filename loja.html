@@ -14,8 +14,9 @@
   <aside class="sidebar">
 
     <div class="logo">
-  <img src="assets/Logo CarePlus Azul.svg" alt="CarePlus" />
-</div>
+      <img src="assets/Logo CarePlus Azul.svg" alt="CarePlus" />
+      <button class="btn-fechar-sidebar" onclick="toggleSidebar()">✕</button>
+    </div>
 
     <div class="perfil-box">
       <div class="perfil-avatar">👤</div>
@@ -48,6 +49,7 @@
   <main class="principal">
 
     <div class="topbar">
+      <button class="btn-menu-mobile" onclick="toggleSidebar()">☰</button>
       <div class="busca-wrap">
         <span class="busca-icone">🔍</span>
         <input type="text" id="campoBusca" placeholder="Buscar produto..." oninput="buscarProduto(this.value)" />
@@ -160,5 +162,10 @@
 
   <script src="scripts/script.js"></script>
   <script src="scripts/loja.js"></script>
+  <script>
+    function toggleSidebar() {
+      document.querySelector('.sidebar').classList.toggle('aberto');
+    }
+  </script>
 </body>
 </html>

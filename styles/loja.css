@@ -368,3 +368,63 @@ body {
 }
 
 .toast.visivel { display: block; }
+
+/* ========== RESPONSIVIDADE LOJA ========== */
+
+@media (max-width: 1024px) {
+  .produtos-grid { grid-template-columns: repeat(3, 1fr); }
+  .cupons-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .principal {
+    margin-left: 0;
+  }
+
+  .btn-menu-mobile {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--azul);
+  }
+
+  .topbar {
+    padding: 10px 15px;
+  }
+
+  .busca-wrap {
+    flex: 1;
+    max-width: none;
+  }
+
+  .conteudo {
+    padding: 15px;
+  }
+
+  .categorias {
+    grid-template-columns: 1fr;
+  }
+
+  .oferta-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cupons-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .produtos-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .card-horizontal {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .card-horizontal-info .nome {
+    text-align: center;
+  }
+}
