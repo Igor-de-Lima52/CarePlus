@@ -66,6 +66,31 @@ function isValidCPF(cpf) {
     return reminder === parseInt(digits[10]);
 }
 
+function updateAccount(account) {
+  const accounts = getAccounts();
+  const idx = accounts.findIndex(a => a.email === account.email);
+  if (idx !== -1) {
+    accounts[idx] = account;
+    setCookie('careplus_accounts', accounts, 30);
+  }
+}
+
+function addDependente(data) {
+  const account = getLoggedAccount();
+  if (!account) return false;
+  if (!account.dependentes) account.dependentes = [];
+  account.dependentes.push({
+    id: 'dep_' + Date.now(),
+    nome: data.nome,
+    cpf: data.cpf,
+    peso: data.peso,
+    sexo: data.sexo,
+    idade: data.idade
+  });
+  updateAccount(account);
+  return true;
+}
+
 function sair() {
     clearSession();
     window.location.href = 'index.html';

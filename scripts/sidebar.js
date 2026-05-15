@@ -1,5 +1,5 @@
 const SIDEBAR_ITEMS = [
-  { label: 'Perfil', icon: '👤', route: 'editardependente.html' },
+  { label: 'Perfil', icon: '👤', route: 'perfil.html', matchRoutes: ['perfil.html', 'editardependente.html', 'adicionardependente.html'] },
   { label: 'Home', icon: '🏠', route: 'home.html' },
   { label: 'Agendamentos', icon: '📅', route: 'agendamentos.html' },
   { label: 'Prêmios', icon: '🏪', route: 'loja.html' },
@@ -24,7 +24,7 @@ function renderSidebar() {
   const currentRoute = getCurrentRoute();
 
   const menuHtml = SIDEBAR_ITEMS.map(item => {
-    const isActive = item.route === currentRoute;
+    const isActive = (item.matchRoutes || [item.route]).includes(currentRoute);
     return `<div class="menu-item${isActive ? ' ativo' : ''}" data-route="${item.route}">
         <span class="menu-icone">${item.icon}</span>
         <span>${item.label}</span>

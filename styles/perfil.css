@@ -1,0 +1,137 @@
+.conteudo-perfil {
+  padding: 2rem 3.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.perfil-titulo {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 3rem;
+  font-weight: 600;
+  color: #000;
+}
+
+.perfil-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btn-adicionar-dep {
+  width: 297px;
+  height: 50px;
+  background: #0079c8;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 3.5px rgba(0, 0, 0, 0.25);
+  transition: background 0.2s;
+}
+
+.btn-adicionar-dep:hover {
+  background: #005fa3;
+}
+
+.tabela-dependentes {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Montserrat', sans-serif;
+  background: #e8ebef;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.tabela-dependentes thead tr {
+  background: #ab47bc;
+}
+
+.tabela-dependentes thead th {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: left;
+  padding: 1.6rem 1.2rem;
+}
+
+.tabela-dependentes tbody tr {
+  border-bottom: 1px solid #0079c8;
+}
+
+.tabela-dependentes tbody td {
+  padding: 1.6rem 1.2rem;
+  font-size: 2rem;
+  font-weight: 500;
+  color: #000;
+  vertical-align: middle;
+}
+
+.tabela-dependentes .col-acoes {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.btn-editar-dep {
+  width: 252px;
+  height: 43px;
+  background: #54da71;
+  color: #000;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-editar-dep:hover {
+  background: #3cbf56;
+}
+
+.btn-deletar-dep {
+  width: 252px;
+  height: 43px;
+  background: #da5454;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-deletar-dep:hover {
+  background: #c03a3a;
+}
+
+.perfil-rodape {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.btn-editar-senha {
+  width: 297px;
+  height: 50px;
+  background: #0079c8;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 3.5px rgba(0, 0, 0, 0.25);
+  transition: background 0.2s;
+}
+
+.btn-editar-senha:hover {
+  background: #005fa3;
+}
