@@ -80,8 +80,23 @@ body {
 }
 
 
-.status-pendente { background: #fff3cd; color: #856404; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; }
-.status-marcado { background: #d4edda; color: #155724; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; }
+.status-pendente {
+    background: #fff3cd;
+    color: #856404;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.status-marcado {
+    background: #d4edda;
+    color: #155724;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
 
 .btn.cancelar {
     background: none;
@@ -128,12 +143,16 @@ body {
     transition: 0.3s;
 }
 
-.btn.marcar:hover { background: var(--primary-dark); }
+.btn.marcar:hover {
+    background: var(--primary-dark);
+}
 
 .modal-overlay {
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(4px);
     display: flex;
@@ -147,7 +166,7 @@ body {
     width: 480px;
     padding: 30px;
     border-radius: 20px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
 .fechar {
@@ -211,7 +230,7 @@ body {
     z-index: 50;
     list-style: none;
     border-radius: 0 0 10px 10px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 .lista-dropdown li {
@@ -227,7 +246,9 @@ body {
     padding-left: 20px;
 }
 
-.oculta { display: none; }
+.oculta {
+    display: none;
+}
 
 .modal-rodape {
     display: flex;
@@ -286,20 +307,32 @@ body {
     background: var(--primary);
     color: white;
 }
-.btn-resgatar:hover { background: var(--primary-dark); transform: translateY(-2px); }
+
+.btn-resgatar:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
 
 .btn-cancelar-modal {
     background: #fff1f0;
     color: #cf1322;
     border: 1px solid #ffa39e !important;
 }
-.btn-cancelar-modal:hover { background: #ff4d4f; color: white; transform: translateY(-2px); }
+
+.btn-cancelar-modal:hover {
+    background: #ff4d4f;
+    color: white;
+    transform: translateY(-2px);
+}
 
 .btn-voltar {
     background: #f5f5f5;
     color: #595959;
 }
-.btn-voltar:hover { background: #e8e8e8; }
+
+.btn-voltar:hover {
+    background: #e8e8e8;
+}
 
 
 
@@ -332,7 +365,7 @@ body {
         background: #ffffff;
         border-radius: 20px;
         padding: 20px;
-        box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
         border: 1px solid #edf2f7;
         position: relative;
         overflow: hidden;
@@ -341,8 +374,10 @@ body {
     .tabela-linha tr::before {
         content: "";
         position: absolute;
-        top: 0; left: 0;
-        width: 6px; height: 100%;
+        top: 0;
+        left: 0;
+        width: 6px;
+        height: 100%;
         background: var(--primary);
     }
 
@@ -364,7 +399,12 @@ body {
         margin-bottom: 5px;
         border-bottom: 1px solid #f7fafc;
     }
-    .tabela-linha td[data-label="Paciente"]::before { content: "👤 "; margin-right: 8px; font-size: 16px; }
+
+    .tabela-linha td[data-label="Paciente"]::before {
+        content: "👤 ";
+        margin-right: 8px;
+        font-size: 16px;
+    }
 
 
     .tabela-linha td[data-label="Especialidade"],
@@ -373,9 +413,27 @@ body {
         font-size: 14px;
         color: #4a5568;
     }
-    .tabela-linha td[data-label="Especialidade"]::before { content: "📋 Espec: "; font-weight: 700; color: #718096; margin-right: 6px; }
-    .tabela-linha td[data-label="Médico"]::before { content: "👨‍⚕️ Médico: "; font-weight: 700; color: #718096; margin-right: 6px; }
-    .tabela-linha td[data-label="Data"]::before { content: "📅 Data: "; font-weight: 700; color: #718096; margin-right: 6px; }
+
+    .tabela-linha td[data-label="Especialidade"]::before {
+        content: "📋 Espec: ";
+        font-weight: 700;
+        color: #718096;
+        margin-right: 6px;
+    }
+
+    .tabela-linha td[data-label="Médico"]::before {
+        content: "👨‍⚕️ Médico: ";
+        font-weight: 700;
+        color: #718096;
+        margin-right: 6px;
+    }
+
+    .tabela-linha td[data-label="Data"]::before {
+        content: "📅 Data: ";
+        font-weight: 700;
+        color: #718096;
+        margin-right: 6px;
+    }
 
 
     .tabela-linha td[data-label="Status"] {
@@ -385,7 +443,10 @@ body {
         width: auto;
         padding: 0;
     }
-    .tabela-linha td[data-label="Status"]::before { content: ""; }
+
+    .tabela-linha td[data-label="Status"]::before {
+        content: "";
+    }
 
 
     .tabela-linha td[data-label="Ações"] {
@@ -394,7 +455,13 @@ body {
         border-top: 1px solid #f7fafc;
         justify-content: flex-end;
     }
-    .tabela-linha td[data-label="Ações"]::before { content: "Ações: "; font-weight: 700; color: #718096; flex: 1; }
+
+    .tabela-linha td[data-label="Ações"]::before {
+        content: "Ações: ";
+        font-weight: 700;
+        color: #718096;
+        flex: 1;
+    }
 
 
     .btn.cancelar {
@@ -410,11 +477,16 @@ body {
         align-items: center;
         justify-content: center;
     }
-    .btn.cancelar:hover { 
-        color: #cf1322; 
-        transform: scale(1.2); 
+
+    .btn.cancelar:hover {
+        color: #cf1322;
+        transform: scale(1.2);
     }
-    .btn.cancelar .cat-icone { font-size: 20px; font-weight: 900; }
+
+    .btn.cancelar .cat-icone {
+        font-size: 20px;
+        font-weight: 900;
+    }
 
     .btn.marcar {
         width: 100%;
