@@ -1,13 +1,15 @@
 .conteudo-perfil {
-  padding: 2rem 3.2rem;
+  padding: 1.6rem;
   display: flex;
   flex-direction: column;
-  gap: 2.4rem;
+  gap: 1.6rem;
+  width: 100%;
+  min-width: 0;
 }
 
 .perfil-titulo {
   font-family: 'Montserrat', sans-serif;
-  font-size: 3rem;
+  font-size: 1.8rem;
   font-weight: 600;
   color: #000;
 }
@@ -16,17 +18,18 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1.2rem;
 }
 
 .btn-adicionar-dep {
-  width: 297px;
+  width: 20rem;
   height: 50px;
   background: #0079c8;
   color: #fff;
   border: none;
   border-radius: 6px;
   font-family: 'Montserrat', sans-serif;
-  font-size: 16px;
+  font-size: 1.4rem;
   font-weight: 600;
   cursor: pointer;
   box-shadow: 0 4px 3.5px rgba(0, 0, 0, 0.25);
@@ -37,13 +40,19 @@
   background: #005fa3;
 }
 
+.tabela-wrapper {
+  width: 100%;
+  overflow-x: scroll;
+  border-radius: 10px;
+  -webkit-overflow-scrolling: touch;
+}
+
 .tabela-dependentes {
   width: 100%;
+  min-width: 600px;
   border-collapse: collapse;
   font-family: 'Montserrat', sans-serif;
   background: #e8ebef;
-  border-radius: 10px;
-  overflow: hidden;
 }
 
 .tabela-dependentes thead tr {
@@ -52,10 +61,10 @@
 
 .tabela-dependentes thead th {
   color: #fff;
-  font-size: 2rem;
+  font-size: 1.6rem;
   font-weight: 600;
-  text-align: left;
-  padding: 1.6rem 1.2rem;
+  text-align: center;
+  padding: 1.2rem 0.8rem;
 }
 
 .tabela-dependentes tbody tr {
@@ -63,30 +72,34 @@
 }
 
 .tabela-dependentes tbody td {
-  padding: 1.6rem 1.2rem;
-  font-size: 2rem;
+  padding: 1.2rem 0.8rem;
+  font-size: 1.4rem;
   font-weight: 500;
   color: #000;
   vertical-align: middle;
+  text-align: center;
 }
 
 .tabela-dependentes .col-acoes {
   display: flex;
-  gap: 0.8rem;
+  flex-direction: row;
+  gap: 0.4rem;
+  justify-content: center;
   align-items: center;
 }
 
 .btn-editar-dep {
-  width: 252px;
-  height: 43px;
+  width: 38px;
+  height: 38px;
   background: #54da71;
   color: #000;
   border: none;
-  border-radius: 10px;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 18px;
-  font-weight: 500;
+  border-radius: 8px;
+  font-size: 1.8rem;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: background 0.2s;
 }
 
@@ -95,16 +108,17 @@
 }
 
 .btn-deletar-dep {
-  width: 252px;
-  height: 43px;
+  width: 38px;
+  height: 38px;
   background: #da5454;
   color: #fff;
   border: none;
-  border-radius: 10px;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 18px;
-  font-weight: 500;
+  border-radius: 8px;
+  font-size: 1.8rem;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: background 0.2s;
 }
 
@@ -114,18 +128,18 @@
 
 .perfil-rodape {
   display: flex;
-  justify-content: flex-start;
+  justify-content: stretch;
 }
 
 .btn-editar-senha {
-  width: 297px;
+  width: 20rem;
   height: 50px;
   background: #0079c8;
   color: #fff;
   border: none;
   border-radius: 6px;
   font-family: 'Montserrat', sans-serif;
-  font-size: 16px;
+  font-size: 1.4rem;
   font-weight: 600;
   cursor: pointer;
   box-shadow: 0 4px 3.5px rgba(0, 0, 0, 0.25);
@@ -134,4 +148,63 @@
 
 .btn-editar-senha:hover {
   background: #005fa3;
+}
+
+@media screen and (width >= 768px) {
+  .conteudo-perfil {
+    padding: 2rem 3.2rem;
+    gap: 2.4rem;
+  }
+
+  .perfil-titulo {
+    font-size: 2.4rem;
+  }
+
+  .perfil-topo {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .tabela-wrapper {
+    overflow: hidden;
+  }
+
+  .btn-adicionar-dep {
+    width: 30rem;
+    font-size: 1.6rem;
+  }
+
+  .tabela-dependentes {
+    min-width: auto;
+  }
+
+  .tabela-dependentes thead th {
+    font-size: 2rem;
+    padding: 1.6rem 1.2rem;
+  }
+
+  .tabela-dependentes tbody td {
+    padding: 1.6rem 1.2rem;
+    font-size: 1.8rem;
+  }
+
+  .perfil-rodape {
+    justify-content: flex-start;
+  }
+
+  .btn-editar-senha {
+    width: 30rem;
+    font-size: 1.6rem;
+  }
+}
+
+@media screen and (width >= 1024px) {
+  .tabela-dependentes thead th {
+    font-size: 2rem;
+  }
+
+  .tabela-dependentes tbody td {
+    font-size: 1.8rem;
+  }
 }

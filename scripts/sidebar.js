@@ -1,5 +1,5 @@
 const SIDEBAR_ITEMS = [
-  { label: 'Perfil', icon: '👤', route: 'perfil.html', matchRoutes: ['perfil.html', 'editardependente.html', 'adicionardependente.html'] },
+  { label: 'Perfil', icon: '👤', route: 'perfil.html', matchRoutes: ['perfil.html', 'editardependente.html', 'adicionardependente.html', 'editarsenha.html'] },
   { label: 'Home', icon: '🏠', route: 'home.html' },
   { label: 'Agendamentos', icon: '📅', route: 'agendamentos.html' },
   { label: 'Prêmios', icon: '🏪', route: 'loja.html' },
@@ -9,6 +9,16 @@ const SIDEBAR_ITEMS = [
 function getCurrentRoute() {
   const path = window.location.pathname;
   return path.substring(path.lastIndexOf('/') + 1) || 'home.html';
+}
+
+function toggleSidebar() {
+  document.querySelector('.sidebar')?.classList.toggle('aberto');
+  document.querySelector('.sidebar-overlay')?.classList.toggle('visivel');
+}
+
+function fecharSidebar() {
+  document.querySelector('.sidebar')?.classList.remove('aberto');
+  document.querySelector('.sidebar-overlay')?.classList.remove('visivel');
 }
 
 function renderSidebar() {
@@ -33,8 +43,9 @@ function renderSidebar() {
 
   container.innerHTML = `
     <aside class="sidebar">
+      <button class="btn-fechar-sidebar" onclick="fecharSidebar()">✕</button>
       <div class="logo">
-        <img src="assets/Logo CarePlus Azul.svg" alt="CarePlus" />
+        <img src="./assets/Logo CarePlus Branca.svg" alt="CarePlus" />
       </div>
       <div class="perfil-box">
         <div class="perfil-avatar">👤</div>
@@ -51,6 +62,7 @@ function renderSidebar() {
       <nav>${menuHtml}</nav>
       <p class="sidebar-rodape">&ldquo;Agende, acompanhe e cuide:<br>simples assim.&rdquo;</p>
     </aside>
+    <div class="sidebar-overlay" onclick="fecharSidebar()"></div>
   `;
 
   const nameEl = document.getElementById('user-name');
@@ -69,6 +81,7 @@ function renderSidebar() {
 
   container.querySelectorAll('.menu-item').forEach(el => {
     el.addEventListener('click', () => {
+      fecharSidebar();
       const route = el.dataset.route;
       if (route && route !== currentRoute) {
         window.location.href = route;

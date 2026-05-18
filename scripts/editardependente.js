@@ -1,16 +1,44 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const form = document.getElementById('form-adicionar-dep');
-  if (!form) return;
+  const params = new URLSearchParams(window.location.search);
+  const depId = params.get('id');
+  if (!depId) {
+    window.location.href = 'perfil.html';
+    return;
+  }
 
-  const cpfInput = document.getElementById('cpf');
-  cpfInput.addEventListener('input', function () {
-    let value = this.value.replace(/\D/g, '');
-    if (value.length > 11) value = value.slice(0, 11);
-    this.value = value
-      .replace(/(\d{3})(\d)/, '$1.$2')
-      .replace(/(\d{3})(\d)/, '$1.$2')
-      .replace(/(\d{3})(\d{1,2})$/, '$1-$2');
-  });
+  const account = getLoggedAccount();
+  if (!account) {
+    window.location.href = 'index.html';
+    return;
+  }
+
+  const dep = (account.dependentes || []).find(d => d.id === depId);
+  if (!dep) {
+    alert('Dependente não encontrado.');
+    window.location.href = 'perfil.html';
+    return;
+  }
+
+  document.getElementById('nome').value = dep.nome || '';
+  document.getElementById('cpf').value = dep.cpf || '';
+  const rawPeso = dep.peso || '';
+  document.getElementById('peso').value = rawPeso.toLowerCase().includes('kg') ? rawPeso : rawPeso + ' kg';
+
+  const rawIdade = (dep.idade || '').replace(/\D/g, '');
+  if (rawIdade) {
+    const num = parseInt(rawIdade, 10);
+    document.getElementById('idade').value = rawIdade + (num === 1 ? ' ano' : ' anos');
+  }
+
+  const sexoSelect = document.getElementById('sexo');
+  if (dep.sexo) {
+    for (let opt of sexoSelect.options) {
+      if (opt.value === dep.sexo) {
+        opt.selected = true;
+        break;
+      }
+    }
+  }
 
   const pesoInput = document.getElementById('peso');
   pesoInput.addEventListener('input', function () {
@@ -37,13 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  const account = getLoggedAccount();
-  if (!account) {
-    window.location.href = 'index.html';
-    return;
-  }
-
-  form.addEventListener('submit', function (e) {
+  document.getElementById('form-editar-dep').addEventListener('submit', function (e) {
     e.preventDefault();
 
     const nome = document.getElementById('nome').value.trim();
@@ -53,24 +75,23 @@ document.addEventListener('DOMContentLoaded', function () {
     const idade = document.getElementById('idade').value.trim();
 
     if (!nome) { alert('Preencha o nome do dependente.'); return; }
-    if (!cpf) { alert('Preencha o CPF do dependente.'); return; }
     if (!peso) { alert('Preencha o peso do dependente.'); return; }
     if (!sexo) { alert('Selecione o sexo do dependente.'); return; }
     if (!idade) { alert('Preencha a idade do dependente.'); return; }
 
-    if (!isValidCPF(cpf)) {
-      alert('CPF inválido.');
+    const account = getLoggedAccount();
+    if (!account) return;
+
+    const dependentes = account.dependentes || [];
+    const idx = dependentes.findIndex(d => d.id === depId);
+    if (idx === -1) {
+      alert('Dependente não encontrado.');
       return;
     }
 
-    const existing = (account.dependentes || []).find(d => d.cpf === cpf);
-    if (existing) {
-      alert('Este CPF já está cadastrado como dependente.');
-      return;
-    }
-
-    addDependente({ nome, cpf, peso, sexo, idade });
-    alert('Dependente adicionado com sucesso!');
+    dependentes[idx] = { ...dependentes[idx], nome, cpf, peso, sexo, idade };
+    updateAccount(account);
+    alert('Dependente editado com sucesso!');
     window.location.href = 'perfil.html';
   });
 

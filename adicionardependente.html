@@ -16,6 +16,7 @@
 
   <main class="principal">
     <div class="topbar">
+      <button class="btn-hamburger" onclick="toggleSidebar()">☰</button>
       <div class="perfil-header">
         <div class="perfil-foto">
           <div class="avatar-placeholder">👤</div>
@@ -45,7 +46,7 @@
         <div class="form-row">
           <div class="form-group">
             <label for="peso">Peso:</label>
-            <input id="peso" type="text" placeholder="Informe o peso em kg" />
+            <input id="peso" type="text" inputmode="numeric" placeholder="Informe o peso em kg" />
           </div>
           <div class="form-group">
             <label for="sexo">Sexo:</label>
@@ -58,7 +59,7 @@
         </div>
         <div class="form-group">
           <label for="idade">Idade:</label>
-          <input id="idade" type="text" placeholder="Informe a idade" />
+          <input id="idade" type="text" inputmode="numeric" placeholder="Informe a idade" />
         </div>
         <div class="form-actions">
           <button type="button" class="btn-cancelar">Cancelar</button>

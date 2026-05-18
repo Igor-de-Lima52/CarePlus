@@ -14,4 +14,15 @@
   --borda:       #E0E7F0;
   --texto:       #1A2332;
   --texto-muted: #607D8B;
+
+  --primary:       #007bff;
+  --primary-dark:  #0056b3;
+  --bg-light:      #f8f9fa;
+  --text-main:     #333;
+  --white:         #ffffff;
+  --border:        #e0e0e0;
+  --shadow:        0 4px 12px rgba(0,0,0,0.08);
+
+  --azul-perfil:   #0079c8;
+  --input-bg:      #e8ebef;
 }
