@@ -45,3 +45,18 @@ document.addEventListener('DOMContentLoaded', function () {
     </tr>
   `).join('');
 });
+
+function buscarConteudo(termo) {
+  const termoMin = termo.toLowerCase().trim();
+  const linhas = document.querySelectorAll('.tabela-dependentes tbody tr');
+  linhas.forEach(linha => {
+    if (linha.cells.length < 2) return;
+    const nome = linha.cells[0]?.textContent?.toLowerCase() || '';
+    const cpf = linha.cells[3]?.textContent?.toLowerCase() || '';
+    if (nome.includes(termoMin) || cpf.includes(termoMin)) {
+      linha.style.display = '';
+    } else {
+      linha.style.display = 'none';
+    }
+  });
+}

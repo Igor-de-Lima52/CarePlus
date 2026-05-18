@@ -9,6 +9,7 @@
     
     <link rel="stylesheet" href="./styles/styles.css" />
     <link rel="stylesheet" href="./styles/sidebar.css" />
+    <link rel="stylesheet" href="./styles/topbar.css" />
     <link rel="stylesheet" href="./styles/agendamento.css">
 </head>
 
@@ -19,14 +20,9 @@
 
         <div class="topbar">
             <button class="btn-hamburger" onclick="toggleSidebar()">☰</button>
-            <div class="perfil-header">
-                <div class="perfil-foto">
-                    <div class="avatar-placeholder">👤</div>
-                </div>
-                <div class="perfil-nome-plano">
-                    <h2 id="topbar-name">Carregando...</h2>
-                    <span id="topbar-plan">Carregando...</span>
-                </div>
+            <div class="busca-wrap">
+                <span class="busca-icone">🔍</span>
+                <input type="text" id="campoBusca" placeholder="Buscar consulta..." oninput="buscarConsulta(this.value)" />
             </div>
             <div class="topbar-direita">
                 <div class="pontos-topo" id="topbar-points">⭐ 0 pts</div>
@@ -65,6 +61,7 @@
                 <p>Deseja remarcar ou cancelar a consulta de <strong id="nomePaciente"></strong>?</p>
                 
                 <div class="modal-botoes-coluna">
+                    <button style="background: #2E7D32; color: white;" onmouseover="this.style.background='#1B5E20'" onmouseout="this.style.background='#2E7D32'" onclick="confirmarAcao('concluir')">✔️ Concluir Consulta</button>
                     <button class="btn-resgatar" onclick="confirmarAcao('remarcar')">📅 Remarcar</button>
                     <button class="btn-cancelar-modal" onclick="confirmarAcao('cancelar')">❌ Cancelar</button>
                     <button class="btn-voltar" onclick="fecharModalOpcoes()">Voltar</button>

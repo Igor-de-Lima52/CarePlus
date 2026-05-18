@@ -1,50 +1,12 @@
 /* ==========================================
-   CarePlus - loja.css
+   CarePlus - topbar.css
    ========================================== */
 
-:root {
-  --azul:        #1565C0;
-  --azul-escuro: #0D47A1;
-  --azul-claro:  #E8F0FE;
-  --laranja:     #FF6F00;
-  --amarelo:     #FDD835;
-  --verde:       #2E7D32;
-  --fundo:       #F0F4FA;
-  --branco:      #FFFFFF;
-  --cinza:       #90A4AE;
-  --borda:       #E0E7F0;
-  --texto:       #1A2332;
-  --texto-muted: #607D8B;
-}
-
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
-body {
-  font-family: 'Nunito', sans-serif;
-  background: var(--fundo);
-  color: var(--texto);
-  display: flex;
-  min-height: 100vh;
-}
-
-.principal {
-  display: flex;
-  margin-left: 215px;
-  flex: 1;
-  flex-direction: column;
-}
-
-@media (max-width: 768px) {
-  .principal {
-    margin-left: 0;
-  }
-}
-
 .topbar {
-  background: var(--branco);
-  padding: 14px 24px;
+  background: var(--branco, #FFFFFF);
+  padding: 1.4rem 2.4rem;
   display: flex;
-  gap: 12px;
+  gap: 1.2rem;
   align-items: center;
   justify-content: space-between;
   box-shadow: 0 1px 6px rgba(0,0,0,0.07);
@@ -53,88 +15,75 @@ body {
   z-index: 10;
 }
 
-.btn-menu-mobile {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  color: var(--azul);
+.busca-wrap { 
+  position: relative; 
+  flex: 1; 
+  max-width: 700px; 
 }
-
-@media (max-width: 768px) {
-  .btn-menu-mobile {
-    display: block;
-  }
-  
-  .topbar {
-    padding: 10px 15px;
-  }
-
-  .busca-wrap {
-    flex: 1;
-    max-width: none;
-  }
-  
-  .topbar-direita {
-    gap: 8px;
-  }
-}
-
-.busca-wrap { position: relative; flex: 1; max-width: 480px; }
 
 .busca-icone {
   position: absolute;
-  left: 12px; top: 50%;
+  left: 1.2rem; 
+  top: 50%;
   transform: translateY(-50%);
-  font-size: 14px;
+  font-size: 1.4rem;
 }
 
 .busca-wrap input {
   width: 100%;
-  padding: 10px 16px 10px 36px;
-  border: 1.5px solid var(--borda);
+  padding: 1rem 1.6rem 1rem 3.6rem;
+  border: 1.5px solid var(--borda, #E0E7F0);
   border-radius: 10px;
   font-family: 'Nunito', sans-serif;
-  font-size: 14px;
+  font-size: 1.4rem;
   outline: none;
-  background: var(--fundo);
+  background: var(--fundo, #F0F4FA);
   transition: border-color 0.2s;
 }
 
-.busca-wrap { position: relative; flex: 1; max-width: 700px; }
+.busca-wrap input:focus {
+  border-color: var(--azul, #1565C0);
+}
 
-.topbar-direita { display: flex; align-items: center; gap: 12px; }
+.topbar-direita { 
+  display: flex; 
+  align-items: center; 
+  gap: 1.2rem; 
+}
 
 .pontos-topo {
-  background: var(--azul-claro);
-  color: var(--azul);
+  background: var(--azul-claro, #E8F0FE);
+  color: var(--azul, #1565C0);
   font-weight: 800;
-  font-size: 13px;
-  padding: 8px 14px;
+  font-size: 1.4rem;
+  padding: 1rem;
   border-radius: 10px;
 }
 
 .btn-sair {
-  background: var(--azul);
-  color: var(--branco);
+  background: var(--azul, #1565C0);
+  color: var(--branco, #FFFFFF);
   border: none;
   border-radius: 10px;
-  padding: 9px 16px;
+  padding: 1rem 1.4rem;
   font-family: 'Nunito', sans-serif;
-  font-size: 13px;
+  font-size: 1.4rem;
   font-weight: 700;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0.2s, transform 0.15s;
 }
 
-.btn-sair:hover { background: var(--azul-escuro); transform: scale(1.1); }
+.btn-sair:hover { 
+  background: var(--azul-escuro, #0D47A1); 
+  transform: scale(1.05);
+}
 
-.conteudo { 
-  height: 100%;
-  padding: 24px; 
-  display: flex; 
-  flex-direction: column; 
-  gap: 28px; 
-  justify-content: space-between;
+@media (max-width: 768px) {
+  .topbar {
+    padding: 1rem 1.5rem;
+  }
+  .busca-wrap {
+    flex: 1;
+    max-width: none;
+  }
 }

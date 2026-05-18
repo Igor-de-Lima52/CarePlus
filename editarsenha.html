@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./styles/styles.css" />
   <link rel="stylesheet" href="./styles/sidebar.css" />
+  <link rel="stylesheet" href="./styles/topbar.css" />
   <link rel="stylesheet" href="./styles/editardependente.css" />
 </head>
 <body>
@@ -17,15 +18,11 @@
   <main class="principal">
     <div class="topbar">
       <button class="btn-hamburger" onclick="toggleSidebar()">☰</button>
-      <div class="perfil-header">
-        <div class="perfil-foto">
-          <div class="avatar-placeholder">👤</div>
-        </div>
-        <div class="perfil-nome-plano">
-          <h2 id="topbar-name">Carregando...</h2>
-          <span id="topbar-plan">Carregando...</span>
-        </div>
+      <div class="busca-wrap">
+        <span class="busca-icone">🔍</span>
+        <input type="text" id="campoBusca" placeholder="Buscar..." oninput="if(typeof buscarConteudo === 'function') buscarConteudo(this.value); else if(typeof buscarConsulta === 'function') buscarConsulta(this.value); else if(typeof buscarProduto === 'function') buscarProduto(this.value);" />
       </div>
+        
       <div class="topbar-direita">
         <div class="pontos-topo" id="topbar-points">⭐ 0 pts</div>
         <button class="btn-sair" onclick="sair()">↪ Sair</button>

@@ -70,23 +70,19 @@ const diasDisponiveis = [
   { id: 530, data: "24/05/2026", medicoId: 15, clinicaId: 104 }
 ];
 
-const pacientes = [
-  { id: 1, nome: "Ana Beatriz" },
-  { id: 2, nome: "Lucas Ferreira" },
-  { id: 3, nome: "Mariana Alves" },
-  { id: 4, nome: "Pedro Henrique" },
-  { id: 5, nome: "Juliana Martins" },
-  { id: 6, nome: "Carlos Eduardo" },
-  { id: 7, nome: "Fernanda Souza" },
-  { id: 8, nome: "Ricardo Lima" },
-  { id: 9, nome: "Patrícia Gomes" },
-  { id: 10, nome: "Gabriel Costa" },
-  { id: 11, nome: "Amanda Rocha" },
-  { id: 12, nome: "Thiago Almeida" },
-  { id: 13, nome: "Vanessa Santos" },
-  { id: 14, nome: "Bruno Oliveira" },
-  { id: 15, nome: "Larissa Mendes" }
-];
+let pacientes = [];
+function carregarPacientes() {
+    const account = getLoggedAccount();
+    if (account) {
+        pacientes.push({ id: account.cpf || '1', nome: account.name });
+        if (account.dependentes) {
+            account.dependentes.forEach(dep => {
+                pacientes.push({ id: dep.id, nome: dep.nome });
+            });
+        }
+    }
+}
+carregarPacientes();
 
 
 function configurarBuscaDropdown(idInput, idLista, dadosParaFiltrar, acaoAposClique) {
@@ -192,14 +188,61 @@ function fecharModalOpcoes() {
 }
 
 function confirmarAcao(acao) {
+    const account = getLoggedAccount();
+    const dataStr = linhaAtual.querySelector('td[data-label="Data"]').textContent;
+    const parts = dataStr.split('/');
+    const aptDate = new Date(parts[2], parts[1] - 1, parts[0]);
+    const hoje = new Date();
+    hoje.setHours(0,0,0,0);
+    aptDate.setHours(0,0,0,0);
+    
+    const diffTime = aptDate.getTime() - hoje.getTime();
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
     if (acao === 'cancelar') {
         if (confirm(`Tem certeza que deseja cancelar a consulta de ${document.getElementById('nomePaciente').textContent}?`)) {
+            if (diffDays >= 3) {
+                account.pontos += 2;
+                updateAccount(account);
+                if (typeof refreshPontos === 'function') refreshPontos();
+                alert("Você cancelou com mais de 3 dias de antecedência e ganhou 2 pontos!");
+            }
             linhaAtual.remove();
             fecharModalOpcoes();
         }
     } else if (acao === 'remarcar') {
+        const jaRemarcado = linhaAtual.getAttribute('data-remarcado') === 'true';
+        if (diffDays >= 5 && !jaRemarcado) {
+            account.pontos += 5;
+            updateAccount(account);
+            if (typeof refreshPontos === 'function') refreshPontos();
+            alert("Você está remarcando com mais de 5 dias de antecedência e ganhou 5 pontos!");
+            window.remarcando = true;
+        } else if (diffDays >= 5 && jaRemarcado) {
+            alert("Você já ganhou pontos por remarcar esta consulta anteriormente.");
+        }
+        
         fecharModalOpcoes();
         abrirModalMarcarConsulta();
+        window.linhaParaSubstituir = linhaAtual;
+    } else if (acao === 'concluir') {
+        if (confirm(`Confirmar a conclusão da consulta de ${document.getElementById('nomePaciente').textContent}?`)) {
+            account.pontos += 10;
+            updateAccount(account);
+            if (typeof refreshPontos === 'function') refreshPontos();
+            alert("Consulta concluída! Você ganhou 10 pontos de recompensa.");
+            
+            const statusSpan = linhaAtual.querySelector('.status-marcado');
+            if (statusSpan) {
+                statusSpan.textContent = 'Concluída';
+                statusSpan.style.background = '#e2f0d9';
+                statusSpan.style.color = '#385723';
+            }
+            const actionTd = linhaAtual.querySelector('td[data-label="Ações"]');
+            if (actionTd) actionTd.innerHTML = '';
+            
+            fecharModalOpcoes();
+        }
     }
 }
 
@@ -214,8 +257,18 @@ function salvarAgendamento() {
         return;
     }
 
+    if (window.linhaParaSubstituir) {
+        window.linhaParaSubstituir.remove();
+        window.linhaParaSubstituir = null;
+    }
+
     const tbody = document.querySelector(".tabela-linha");
     const novaLinha = document.createElement("tr");
+    
+    if (window.remarcando) {
+        novaLinha.setAttribute('data-remarcado', 'true');
+        window.remarcando = false;
+    }
 
     novaLinha.innerHTML = `
         <td data-label="Paciente">${paciente}</td>
@@ -224,8 +277,8 @@ function salvarAgendamento() {
         <td data-label="Data">${data}</td>
         <td data-label="Status"><span class="status-marcado">Marcado</span></td>
         <td data-label="Ações">
-            <button class="btn cancelar" onclick="abrirModalOpcoes('${paciente}', this)">
-                <span class="cat-icone">✕</span>
+            <button class="btn cancelar" onclick="abrirModalOpcoes('${paciente}', this)" title="Opções">
+                <span class="cat-icone">⚙️</span>
             </button>
         </td>
     `;
@@ -234,4 +287,21 @@ function salvarAgendamento() {
     
     fecharModalMarcarConsulta();
     resetarCampos(['paciente-input', 'especialidade-input', 'clinica-input', 'data-input', 'medico-input']);
+}
+
+function buscarConsulta(termo) {
+    const termoMin = termo.toLowerCase().trim();
+    const linhas = document.querySelectorAll('.tabela-linha tr');
+    
+    linhas.forEach(linha => {
+        const paciente = linha.querySelector('td[data-label="Paciente"]')?.textContent?.toLowerCase() || '';
+        const especialidade = linha.querySelector('td[data-label="Especialidade"]')?.textContent?.toLowerCase() || '';
+        const medico = linha.querySelector('td[data-label="Médico"]')?.textContent?.toLowerCase() || '';
+        
+        if (paciente.includes(termoMin) || especialidade.includes(termoMin) || medico.includes(termoMin)) {
+            linha.style.display = '';
+        } else {
+            linha.style.display = 'none';
+        }
+    });
 }
