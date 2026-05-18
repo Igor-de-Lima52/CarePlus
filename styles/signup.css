@@ -1,3 +1,99 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.aside-img {
+  display: none;
+}
+
+.main-signs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.form-group > label {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 10px;
+}
+
+.form-group input {
+  width: 100%;
+  height: 5rem;
+  padding: 0 1rem;
+  border: 1px solid #000000;
+  border-radius: 6px;
+  background-color: #e8ebefff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.4rem;
+  color: #000000;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+  border-color: #0079c8;
+  border-width: 2px;
+}
+
+.form-group input::placeholder {
+  color: #000000;
+  opacity: 0.6;
+}
+
+.login-button, .signup-button {
+  width: 100%;
+  height: 50px;
+  background-color: #0079c8;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 3.5px rgba(0, 0, 0, 0.25);
+  transition: background-color 0.3s, transform 0.1s;
+}
+
+.login-button:hover {
+  background-color: #005fa3;
+}
+
+.login-button:active {
+  transform: scale(0.98);
+}
+
+.login-link {
+  margin-top: 6rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #495057;
+  opacity: 0.6;
+  text-align: center;
+  line-height: 1.2;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-link:hover, .login-link:hover {
+  text-decoration: underline;
+}
+
+.signup-link span, .login-link span {
+  color: #004ecc;
+}
+
 .signup-container {
   width: 100%;
   height: 100%;
@@ -32,6 +128,10 @@
 }
 
 @media screen and (width >= 390px) {
+  body {
+    height: 100vh;
+  }
+
   .main-signs {
     justify-content: center;
   }
@@ -39,7 +139,7 @@
   .signup-container {
     overflow: hidden;
   }
-  
+
   .signup-form {
     gap: 1.7rem;
   }
@@ -50,12 +150,23 @@
 }
 
 @media screen and (width >= 768px) {
-  .main-signs {
-    justify-content: center;
+  .form-group > label {
+    font-size: 2.2rem;
   }
-  
-  .logo-placeholder {
-    margin-top: 3.5rem;
+
+  .form-group input {
+    height: 6rem;
+  }
+
+  .signup-button {
+    height: 6rem;
+    margin-top: 2rem;
+    font-size: 2rem;
+  }
+
+  .signup-link {
+    margin-top: 8rem;
+    font-size: 2rem;
   }
 
   .signup-container {
@@ -66,41 +177,79 @@
   .signup-form {
     width: 60rem;
   }
-  
+
   .signup-title {
     font-size: 3rem;
-    margin: 5.8rem 0 4.2rem;
+    margin: 4rem 0;
   }
 }
 
 @media screen and (width >= 1024px) {
+  .form-group > label {
+    font-size: 3rem;
+  }
+
+  .form-group input {
+    height: 8rem;
+    font-size: 2rem;
+  }
+
+  .signup-button {
+    height: 8rem;
+    font-size: 3rem;
+  }
+
   .signup-form {
     width: 80rem;
     gap: 3rem;
   }
 
   .signup-title {
-    font-size: 4rem;
-    margin: 5.8rem 0 4.2rem;
+    font-size: 3.8rem;
+    margin: 5rem 0 5rem;
   }
 
   .login-link {
     font-size: 2rem;
-    margin-top: 1rem;
+    margin-top: 4rem;
   }
 }
 
 @media screen and (width >= 1300px) {
+  .aside-img {
+    display: block;
+    width: 45%;
+    height: 100%;
+    z-index: 1;
+    box-sizing: content-box;
+    border-right: 0;
+    border-left: 70px solid #3576d3;
+  }
+
+  .aside-img .side-image {
+    width: 100%;
+    height: 100%;
+  }
+
+  .form-group > label {
+    font-size: 2.2rem;
+  }
+
+  .form-group input {
+    height: 6rem;
+  }
+
+  .signup-button {
+    height: 6rem;
+    font-size: 2rem;
+  }
+
   .signup-container {
     overflow: hidden;
   }
 
-  .aside-img {
-    border-left: 70px solid #3576d3;
-  }
-
   .signup-form {
-    width: 40rem;
+    width: 50rem;
     gap: 1rem;
   }
 
@@ -115,5 +264,11 @@
 
   .login-link {
     margin-top: 2rem;
+  }
+}
+
+@media screen and (width >= 2400px) {
+  .signup-form {
+    width: 70rem;
   }
 }

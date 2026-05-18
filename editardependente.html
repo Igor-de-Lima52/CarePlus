@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CarePlus – Perfil</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles/styles.css" />
+  <link rel="stylesheet" href="./styles/sidebar.css" />
+  <link rel="stylesheet" href="./styles/editardependente.css" />
+</head>
+<body>
+
+  <div id="sidebar-container"></div>
+
+  <main class="principal">
+    <div class="topbar">
+      <button class="btn-hamburger" onclick="toggleSidebar()">☰</button>
+      <div class="perfil-header">
+        <div class="perfil-foto">
+          <div class="avatar-placeholder">👤</div>
+        </div>
+        <div class="perfil-nome-plano">
+          <h2 id="topbar-name">Carregando...</h2>
+          <span id="topbar-plan">Carregando...</span>
+        </div>
+      </div>
+      <div class="topbar-direita">
+        <div class="pontos-topo" id="topbar-points">⭐ 0 pts</div>
+        <button class="btn-sair" onclick="sair()">↪ Sair</button>
+      </div>
+    </div>
+
+    <form class="conteudo-perfil" id="form-editar-dep">
+      <h3 class="form-title">Editar Dependente</h3>
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="nome">Nome:</label>
+          <input id="nome" type="text" placeholder="Informe o nome do dependente" />
+        </div>
+        <div class="form-group">
+          <label for="cpf">CPF:</label>
+          <input id="cpf" type="text" placeholder="Informe o cpf do dependente" />
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="peso">Peso:</label>
+            <input id="peso" type="text" inputmode="numeric" placeholder="Informe o peso em kg" />
+          </div>
+          <div class="form-group">
+            <label for="sexo">Sexo:</label>
+            <select id="sexo">
+              <option value="">Informe o sexo</option>
+              <option value="Mas">Mas</option>
+              <option value="Fem">Fem</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="idade">Idade:</label>
+          <input id="idade" type="text" inputmode="numeric" placeholder="Informe a idade" />
+        </div>
+        <div class="form-actions">
+          <button class="btn-cancelar" type="button">Cancelar</button>
+          <button type="submit" class="btn-editar">Editar</button>
+        </div>
+      </div>
+    </form>
+  </main>
+  <script src="./scripts/auth.js"></script>
+  <script src="./scripts/sidebar.js"></script>
+  <script src="./scripts/editardependente.js"></script>
+</body>
+</html>

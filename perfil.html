@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CarePlus – Perfil</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles/styles.css" />
+  <link rel="stylesheet" href="styles/sidebar.css" />
+  <link rel="stylesheet" href="styles/perfil.css" />
+</head>
+<body>
+
+  <div id="sidebar-container"></div>
+
+  <main class="principal">
+    <div class="topbar">
+      <button class="btn-hamburger" onclick="toggleSidebar()">☰</button>
+      <div class="perfil-header">
+        <div class="perfil-foto">
+          <div class="avatar-placeholder">👤</div>
+        </div>
+        <div class="perfil-nome-plano">
+          <h2 id="topbar-name">Carregando...</h2>
+          <span id="topbar-plan">Carregando...</span>
+        </div>
+      </div>
+      <div class="topbar-direita">
+        <div class="pontos-topo" id="topbar-points">⭐ 0 pts</div>
+        <button class="btn-sair" onclick="sair()">↪ Sair</button>
+      </div>
+    </div>
+
+    <div class="conteudo-perfil">
+      <div class="perfil-topo">
+        <h1 class="perfil-titulo">Dependentes</h1>
+        <button class="btn-adicionar-dep" onclick="window.location.href='adicionardependente.html'">Adicionar dependente</button>
+      </div>
+
+      <div class="tabela-wrapper">
+        <table class="tabela-dependentes">
+          <colgroup>
+            <col style="width: 30%">
+            <col style="width: 10%">
+            <col style="width: 10%">
+            <col style="width: 25%">
+            <col style="width: 10%">
+            <col style="width: 15%">
+          </colgroup>
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Peso</th>
+              <th>Sexo</th>
+              <th>CPF</th>
+              <th>Idade</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="perfil-rodape">
+        <button class="btn-editar-senha" onclick="window.location.href='editarsenha.html'" >Editar senha</button>
+      </div>
+    </div>
+  </main>
+  <script src="scripts/auth.js"></script>
+  <script src="scripts/sidebar.js"></script>
+  <script src="scripts/perfil.js"></script>
+</body>
+</html>

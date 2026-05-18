@@ -1,0 +1,210 @@
+.conteudo-perfil {
+  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  width: 100%;
+  min-width: 0;
+}
+
+.perfil-titulo {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #000;
+}
+
+.perfil-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+}
+
+.btn-adicionar-dep {
+  width: 20rem;
+  height: 50px;
+  background: #0079c8;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 3.5px rgba(0, 0, 0, 0.25);
+  transition: background 0.2s;
+}
+
+.btn-adicionar-dep:hover {
+  background: #005fa3;
+}
+
+.tabela-wrapper {
+  width: 100%;
+  overflow-x: scroll;
+  border-radius: 10px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.tabela-dependentes {
+  width: 100%;
+  min-width: 600px;
+  border-collapse: collapse;
+  font-family: 'Montserrat', sans-serif;
+  background: #e8ebef;
+}
+
+.tabela-dependentes thead tr {
+  background: #ab47bc;
+}
+
+.tabela-dependentes thead th {
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 1.2rem 0.8rem;
+}
+
+.tabela-dependentes tbody tr {
+  border-bottom: 1px solid #0079c8;
+}
+
+.tabela-dependentes tbody td {
+  padding: 1.2rem 0.8rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #000;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.tabela-dependentes .col-acoes {
+  display: flex;
+  flex-direction: row;
+  gap: 0.4rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-editar-dep {
+  width: 38px;
+  height: 38px;
+  background: #54da71;
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.8rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.btn-editar-dep:hover {
+  background: #3cbf56;
+}
+
+.btn-deletar-dep {
+  width: 38px;
+  height: 38px;
+  background: #da5454;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.8rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.btn-deletar-dep:hover {
+  background: #c03a3a;
+}
+
+.perfil-rodape {
+  display: flex;
+  justify-content: stretch;
+}
+
+.btn-editar-senha {
+  width: 20rem;
+  height: 50px;
+  background: #0079c8;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 3.5px rgba(0, 0, 0, 0.25);
+  transition: background 0.2s;
+}
+
+.btn-editar-senha:hover {
+  background: #005fa3;
+}
+
+@media screen and (width >= 768px) {
+  .conteudo-perfil {
+    padding: 2rem 3.2rem;
+    gap: 2.4rem;
+  }
+
+  .perfil-titulo {
+    font-size: 2.4rem;
+  }
+
+  .perfil-topo {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .tabela-wrapper {
+    overflow: hidden;
+  }
+
+  .btn-adicionar-dep {
+    width: 30rem;
+    font-size: 1.6rem;
+  }
+
+  .tabela-dependentes {
+    min-width: auto;
+  }
+
+  .tabela-dependentes thead th {
+    font-size: 2rem;
+    padding: 1.6rem 1.2rem;
+  }
+
+  .tabela-dependentes tbody td {
+    padding: 1.6rem 1.2rem;
+    font-size: 1.8rem;
+  }
+
+  .perfil-rodape {
+    justify-content: flex-start;
+  }
+
+  .btn-editar-senha {
+    width: 30rem;
+    font-size: 1.6rem;
+  }
+}
+
+@media screen and (width >= 1024px) {
+  .tabela-dependentes thead th {
+    font-size: 2rem;
+  }
+
+  .tabela-dependentes tbody td {
+    font-size: 1.8rem;
+  }
+}

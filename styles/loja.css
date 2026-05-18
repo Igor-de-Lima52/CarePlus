@@ -1,5 +1,5 @@
 /* ==========================================
-   CarePlus - loja.css
+   CarePlus - loja.css (Resolved)
    ========================================== */
 
 :root {
@@ -17,7 +17,11 @@
   --texto-muted: #607D8B;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+}
 
 body {
   font-family: 'Nunito', sans-serif;
@@ -30,7 +34,6 @@ body {
 /* ========== CONTEÚDO PRINCIPAL ========== */
 
 .principal {
-  margin-left: 215px;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -38,9 +41,9 @@ body {
 
 .topbar {
   background: var(--branco);
-  padding: 14px 24px;
+  padding: 1.4rem 2.4rem;
   display: flex;
-  gap: 12px;
+  gap: 1.2rem;
   align-items: center;
   justify-content: space-between;
   box-shadow: 0 1px 6px rgba(0,0,0,0.07);
@@ -49,37 +52,44 @@ body {
   z-index: 10;
 }
 
-.busca-wrap { position: relative; flex: 1; max-width: 480px; }
+.busca-wrap { 
+  position: relative; 
+  flex: 1; 
+  max-width: 700px; 
+}
 
 .busca-icone {
   position: absolute;
-  left: 12px; top: 50%;
+  left: 12px; 
+  top: 50%;
   transform: translateY(-50%);
-  font-size: 14px;
+  font-size: 1.4rem;
 }
 
 .busca-wrap input {
   width: 100%;
-  padding: 10px 16px 10px 36px;
+  padding: 1rem 1.6rem 1rem 3.6rem;
   border: 1.5px solid var(--borda);
   border-radius: 10px;
   font-family: 'Nunito', sans-serif;
-  font-size: 14px;
+  font-size: 1.4rem;
   outline: none;
   background: var(--fundo);
   transition: border-color 0.2s;
 }
 
-.busca-wrap { position: relative; flex: 1; max-width: 700px; }
-
-.topbar-direita { display: flex; align-items: center; gap: 12px; }
+.topbar-direita { 
+  display: flex; 
+  align-items: center; 
+  gap: 1.2rem; 
+}
 
 .pontos-topo {
   background: var(--azul-claro);
   color: var(--azul);
   font-weight: 800;
-  font-size: 13px;
-  padding: 8px 14px;
+  font-size: 1.4rem;
+  padding: 1rem;
   border-radius: 10px;
 }
 
@@ -88,31 +98,42 @@ body {
   color: var(--branco);
   border: none;
   border-radius: 10px;
-  padding: 9px 16px;
+  padding: 1rem 1.4rem;
   font-family: 'Nunito', sans-serif;
-  font-size: 13px;
+  font-size: 1.4rem;
   font-weight: 700;
   cursor: pointer;
   transition: background 0.2s;
 }
 
-.btn-sair:hover { background: var(--azul-escuro); }
+.btn-sair:hover { 
+  background: var(--azul-escuro); 
+}
 
-.conteudo { padding: 24px; display: flex; flex-direction: column; gap: 28px; }
+.conteudo { 
+  padding: 2.4rem; 
+  display: flex; 
+  flex-direction: column; 
+  gap: 28px; 
+}
 
 /* ========== CATEGORIAS ========== */
 
-.categorias { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.categorias { 
+  display: grid; 
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 1.2rem; 
+}
 
 .categorias button {
   background: var(--azul);
   color: var(--branco);
   border: none;
   border-radius: 14px;
-  padding: 16px 20px;
+  padding: 1.6rem 2rem;
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 1.4rem;
   font-family: 'Nunito', sans-serif;
   cursor: pointer;
   transition: background 0.2s, transform 0.15s;
@@ -120,19 +141,34 @@ body {
   text-align: left;
 }
 
-.categorias button:hover { background: var(--azul-escuro); transform: translateY(-2px); }
+.categorias button:hover { 
+  background: var(--azul-escuro); 
+  transform: translateY(-2px); 
+}
 
 .cat-icone {
-  font-size: 28px;
+  font-size: 2.8rem;
   background: rgba(255,255,255,0.15);
   border-radius: 10px;
-  width: 48px; height: 48px;
-  display: flex; align-items: center; justify-content: center;
+  width: 4.8rem;
+  height: 4.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
 }
 
-.cat-texto strong { display: block; font-size: 16px; font-weight: 800; }
-.cat-texto small  { font-size: 11px; opacity: 0.75; font-weight: 600; }
+.cat-texto strong { 
+  display: block; 
+  font-size: 16px; 
+  font-weight: 800; 
+}
+
+.cat-texto small { 
+  font-size: 1.2rem; 
+  opacity: 0.75; 
+  font-weight: 600; 
+}
 
 /* ========== TÍTULO DE SEÇÃO ========== */
 
@@ -140,32 +176,40 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 14px;
+  margin-bottom: 1.4rem;
 }
 
-.titulo-secao span { font-size: 15px; font-weight: 800; color: var(--texto); }
+.titulo-secao span { 
+  font-size: 1.5rem; 
+  font-weight: 800; 
+  color: var(--texto); 
+}
 
 .titulo-secao small {
-  font-size: 12px;
+  font-size: 1.2rem;
   color: var(--laranja);
   font-weight: 700;
   background: #FFF3E0;
-  padding: 3px 10px;
+  padding: 0.4rem 1rem;
   border-radius: 20px;
 }
 
 /* ========== OFERTA DO DIA ========== */
 
-.oferta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.oferta-grid { 
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  gap: 1.4rem; 
+}
 
 .card-oferta {
   background: var(--branco);
   border-radius: 14px;
-  padding: 20px 16px 16px;
+  padding: 2rem 1.6rem 1.6rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 0.6rem;
   cursor: pointer;
   position: relative;
   border: 1.5px solid var(--borda);
@@ -179,75 +223,118 @@ body {
 }
 
 .card-destaque {
-  padding-top: 28px;
+  padding-top: 2.8rem;
   background: linear-gradient(160deg, #E8F0FE 0%, #ffffff 60%);
 }
-.card-destaque img { width: 110px; object-fit: contain; }
+
+.card-destaque img { 
+  width: 11rem; 
+  object-fit: contain; 
+}
 
 .card-horizontal {
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  gap: 14px;
-  padding: 16px;
+  gap: 1.4rem;
+  padding: 1.6rem;
 }
 
-.card-horizontal img { width: 110px; object-fit: contain; flex-shrink: 0; }
+.card-horizontal img { 
+  width: 11rem; 
+  object-fit: contain; 
+  flex-shrink: 0; 
+}
 
-.card-horizontal-info { flex: 1; display: flex; flex-direction: column; gap: 4px; }
-.card-horizontal-info .nome { text-align: left; }
+.card-horizontal-info { 
+  flex: 1; 
+  display: flex; 
+  flex-direction: column; 
+  gap: 0.4rem; 
+}
 
-.seta { font-size: 24px; color: var(--cinza); flex-shrink: 0; }
+.card-horizontal-info .nome { 
+  text-align: left; 
+}
+
+.seta { 
+  font-size: 2.4rem; 
+  color: var(--cinza); 
+  flex-shrink: 0; 
+}
 
 .badge {
   position: absolute;
-  top: 10px; left: 10px;
+  top: 10px; 
+  left: 10px;
   background: var(--laranja);
   color: var(--branco);
-  font-size: 10px;
+  font-size: 1rem;
   font-weight: 800;
   border-radius: 6px;
-  padding: 3px 8px;
+  padding: 0.4rem 0.8rem;
 }
 
 .economia-tag {
   background: #E8F5E9;
   color: var(--verde);
-  font-size: 11px;
+  font-size: 1.2rem;
   font-weight: 800;
   border-radius: 20px;
-  padding: 3px 10px;
-  margin-top: 4px;
+  padding: 0.4rem 1rem;
+  margin-top: 0.4rem;
 }
 
 /* ========== PREÇOS ========== */
 
-.precos { display: flex; align-items: center; gap: 8px; }
+.precos { 
+  display: flex; 
+  align-items: center; 
+  gap: 0.8rem; 
+}
 
-.nome      { font-size: 13px; font-weight: 700; color: var(--texto); text-align: center; }
-.desc-card { font-size: 14px; color: var(--texto-muted); text-align: center; }
+.nome { 
+  font-size: 1.3rem; 
+  font-weight: 700; 
+  color: var(--texto); 
+  text-align: center; 
+}
+
+.desc-card { 
+  font-size: 1.4rem; 
+  color: var(--texto-muted); 
+  text-align: center; 
+}
 
 .preco-antigo {
-  font-size: 12px;
+  font-size: 1.2rem;
   color: var(--cinza);
   text-decoration: line-through;
   font-weight: 600;
 }
 
-.preco { font-size: 17px; font-weight: 900; color: var(--laranja); }
+.preco { 
+  font-size: 1.7rem; 
+  font-weight: 900; 
+  color: var(--laranja); 
+}
 
 /* ========== CUPONS ========== */
 
-.cupons-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.cupons-grid { 
+  display: grid; 
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 1.4rem; 
+}
 
 .card-cupom {
   background: var(--branco);
   border-radius: 14px;
-  padding: 16px;
+  padding: 1.6rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 0.8rem;
   cursor: pointer;
   border: 1.5px solid var(--borda);
   transition: transform 0.15s, box-shadow 0.2s, border-color 0.2s;
@@ -259,21 +346,33 @@ body {
   border-color: var(--azul);
 }
 
-.card-cupom img { width: 60%; height: 50px; object-fit: cover; border-radius: 8px; }
-.card-cupom .nome { font-size: 13px; }
+.card-cupom img { 
+  width: 60%; 
+  height: 50px; 
+  object-fit: cover; 
+  border-radius: 8px; 
+}
+
+.card-cupom .nome { 
+  font-size: 1.3rem; 
+}
 
 /* ========== PRODUTOS ========== */
 
-.produtos-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+.produtos-grid { 
+  display: grid; 
+  grid-template-columns: repeat(5, 1fr); 
+  gap: 1.4rem; 
+}
 
 .card {
   background: var(--branco);
   border-radius: 14px;
-  padding: 14px 10px 12px;
+  padding: 1.4rem 1rem 1.2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 0.6rem;
   cursor: pointer;
   border: 1.5px solid var(--borda);
   transition: transform 0.15s, box-shadow 0.2s, border-color 0.2s;
@@ -285,9 +384,24 @@ body {
   border-color: var(--azul);
 }
 
-.card img { width: 80px; height: 80px; object-fit: contain; }
-.card h3  { font-size: 11px; font-weight: 700; text-align: center; color: var(--texto); }
-.card p   { font-size: 14px; font-weight: 900; color: var(--laranja); }
+.card img { 
+  width: 8rem; 
+  height: 8rem; 
+  object-fit: contain; 
+}
+
+.card h3 { 
+  font-size: 1.1rem; 
+  font-weight: 700; 
+  text-align: center; 
+  color: var(--texto); 
+}
+
+.card p { 
+  font-size: 1.4rem; 
+  font-weight: 900; 
+  color: var(--laranja); 
+}
 
 /* ========== MODAL ========== */
 
@@ -304,13 +418,13 @@ body {
 .modal-caixa {
   background: var(--branco);
   border-radius: 18px;
-  padding: 28px;
-  width: 330px;
+  padding: 2.8rem;
+  width: 33rem;
   max-width: 92vw;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 1rem;
   box-shadow: 0 12px 40px rgba(0,0,0,0.20);
 }
 
@@ -321,24 +435,47 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 16px;
+  padding: 1.6rem;
 }
 
-.modal-img-box img { width: 120px; object-fit: contain; }
+.modal-img-box img { 
+  width: 12rem; 
+  object-fit: contain; 
+}
 
-.modal-caixa h3    { font-size: 17px; font-weight: 800; text-align: center; }
-.modal-desc        { font-size: 13px; color: var(--texto-muted); text-align: center; line-height: 1.5; }
-.modal-preco       { font-size: 26px; font-weight: 900; color: var(--laranja); }
+.modal-caixa h3 { 
+  font-size: 1.7rem; 
+  font-weight: 800; 
+  text-align: center; 
+}
 
-.modal-botoes { display: flex; gap: 10px; width: 100%; margin-top: 6px; }
+.modal-desc { 
+  font-size: 1.3rem; 
+  color: var(--texto-muted); 
+  text-align: center; 
+  line-height: 1.5; 
+}
+
+.modal-preco { 
+  font-size: 2.6rem; 
+  font-weight: 900; 
+  color: var(--laranja); 
+}
+
+.modal-botoes { 
+  display: flex; 
+  gap: 1.6rem; 
+  width: 100%; 
+  margin-top: 0.6rem; 
+}
 
 .modal-botoes button {
   flex: 1;
-  padding: 12px;
+  padding: 1.2rem;
   border: none;
   border-radius: 10px;
   font-family: 'Nunito', sans-serif;
-  font-size: 14px;
+  font-size: 1.4rem;
   font-weight: 700;
   cursor: pointer;
   background: #ECEFF1;
@@ -346,52 +483,54 @@ body {
   transition: background 0.15s;
 }
 
-.modal-botoes button:hover { background: #CFD8DC; }
+.modal-botoes button:hover { 
+  background: #CFD8DC; 
+}
 
-.btn-resgatar { background: var(--azul) !important; color: var(--branco) !important; }
-.btn-resgatar:hover { background: var(--azul-escuro) !important; }
+.btn-resgatar { 
+  background: var(--azul) !important; 
+  color: var(--branco) !important; 
+}
+
+.btn-resgatar:hover { 
+  background: var(--azul-escuro) !important; 
+}
 
 /* ========== TOAST ========== */
 
 .toast {
   display: none;
   position: fixed;
-  bottom: 24px; right: 24px;
+  bottom: 2.4rem; 
+  right: 2.4rem;
   background: var(--verde);
   color: var(--branco);
-  padding: 12px 20px;
+  padding: 1.2rem 2rem;
   border-radius: 10px;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 1.4rem;
   z-index: 200;
   box-shadow: 0 4px 16px rgba(0,0,0,0.18);
 }
 
-.toast.visivel { display: block; }
+.toast.visivel { 
+  display: block; 
+}
 
 /* ========== RESPONSIVIDADE LOJA ========== */
 
 @media (max-width: 1024px) {
-  .produtos-grid { grid-template-columns: repeat(3, 1fr); }
-  .cupons-grid { grid-template-columns: repeat(2, 1fr); }
+  .produtos-grid { 
+    grid-template-columns: repeat(3, 1fr); 
+  }
+  .cupons-grid { 
+    grid-template-columns: repeat(2, 1fr); 
+  }
 }
 
 @media (max-width: 768px) {
-  .principal {
-    margin-left: 0;
-  }
-
-  .btn-menu-mobile {
-    display: block;
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    color: var(--azul);
-  }
-
   .topbar {
-    padding: 10px 15px;
+    padding: 1rem 1.5rem;
   }
 
   .busca-wrap {
@@ -400,7 +539,7 @@ body {
   }
 
   .conteudo {
-    padding: 15px;
+    padding: 1.5rem;
   }
 
   .categorias {
@@ -427,4 +566,4 @@ body {
   .card-horizontal-info .nome {
     text-align: center;
   }
-}
+}

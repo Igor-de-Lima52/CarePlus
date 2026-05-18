@@ -2,69 +2,37 @@
 <html lang="pt-br">
 
 <head>
-    <link rel="stylesheet" href="./styles/agendamento.css">
-    <link rel="stylesheet" href="./styles/sidebar.css" />
-    <link rel="stylesheet" href="./styles/topbar.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
     <title>CarePlus - Agendamentos</title>
+    
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <link rel="stylesheet" href="./styles/sidebar.css" />
+    <link rel="stylesheet" href="./styles/agendamento.css">
 </head>
 
 <body>
-    <aside class="sidebar">
-
-        <div class="logo">
-            <img src="assets/Logo CarePlus Azul.svg" alt="CarePlus" />
-            <button class="btn-fechar-sidebar" onclick="toggleSidebar()">✕</button>
-        </div>
-
-        <div class="perfil-box">
-            <div class="perfil-avatar">👤</div>
-            <div class="perfil-info">
-                <strong id="user-name">Carregando...</strong>
-                <span id="user-tier">Carregando...</span>
-            </div>
-        </div>
-
-        <div class="pontos-box">
-            <span class="pontos-label">⭐ Seus pontos</span>
-            <span class="pontos-valor" id="user-points">0 pts</span>
-        </div>
-
-        <div class="separador"></div>
-
-        <nav>
-            <div class="menu-item" onclick="setAtivo(this)"><a href="" class="sidebar-link"><span class="menu-icone">👤</span><span>Perfil</span></a></div>
-            <div class="menu-item" onclick="setAtivo(this)"><a href="" class="sidebar-link"><span class="menu-icone">🏠</span><span>Home</span></a></div>
-            <div class="menu-item ativo" onclick="setAtivo(this)"><a href="" class="sidebar-link"><span class="menu-icone">📅</span><span>Agendamentos</span></a></div>
-            <div class="menu-item" onclick="setAtivo(this)"><a href="/loja.html" class="sidebar-link"><span class="menu-icone">🏪</span><span>Prêmios</span></a></div>
-            <div class="menu-item" onclick="setAtivo(this)"><a href="" class="sidebar-link"><span class="menu-icone">🏆</span><span>Ranking</span></a></div>
-        </nav>
-
-        <p class="sidebar-rodape">"Agende, acompanhe e cuide:<br>simples assim."</p>
-
-    </aside>
-
-
+    <div id="sidebar-container"></div>
 
     <main class="principal">
 
         <div class="topbar">
-            <button class="btn-menu-mobile" onclick="toggleSidebar()">☰</button>
-            <div class="busca-wrap">
-                <span class="busca-icone">🔍</span>
-                <input type="text" id="campoBusca" placeholder="Buscar consulta..."
-                    oninput="buscarProduto(this.value)" />
+            <button class="btn-hamburger" onclick="toggleSidebar()">☰</button>
+            <div class="perfil-header">
+                <div class="perfil-foto">
+                    <div class="avatar-placeholder">👤</div>
+                </div>
+                <div class="perfil-nome-plano">
+                    <h2 id="topbar-name">Carregando...</h2>
+                    <span id="topbar-plan">Carregando...</span>
+                </div>
             </div>
             <div class="topbar-direita">
                 <div class="pontos-topo" id="topbar-points">⭐ 0 pts</div>
                 <button class="btn-sair" onclick="sair()">↪ Sair</button>
             </div>
         </div>
-
 
         <div class="conteudo">
             <section>
@@ -150,15 +118,12 @@
             </div>
         </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="https://npmcdn.com/flatpickr/dist/l10n/pt.js"></script>
+    </main>
+
+    <script src="./scripts/auth.js"></script>
+    <script src="./scripts/sidebar.js"></script>
     <script src="./scripts/objetosmockados.js"></script>
     <script src="./scripts/agendamentos.js"></script>
-    <script>
-        function toggleSidebar() {
-            document.querySelector('.sidebar').classList.toggle('aberto');
-        }
-    </script>
 </body>
 
 </html>

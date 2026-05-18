@@ -23,7 +23,6 @@ body {
     min-height: 100vh;
 }
 
-
 .tabela {
     width: 100%;
     border-collapse: separate;
@@ -33,7 +32,6 @@ body {
     border-radius: 12px 12px 0 0;
     overflow: hidden;
 }
-
 
 .tabela-titulo {
     background-color: #007bff;
@@ -46,7 +44,6 @@ body {
     font-weight: 700;
 }
 
-
 .tabela-titulo th:first-child {
     border-top-left-radius: 12px;
 }
@@ -55,18 +52,15 @@ body {
     border-top-right-radius: 12px;
 }
 
-
 .tabela-linha td {
     padding: 15px;
     border-bottom: 1px solid #eee;
     color: #444;
 }
 
-
 .tabela-linha tr:nth-child(even) {
     background-color: #f8fbff;
 }
-
 
 .tabela-linha tr {
     transition: all 0.2s ease;
@@ -78,7 +72,6 @@ body {
     background-color: #ffffff !important;
     z-index: 1;
 }
-
 
 .status-pendente {
     background: #fff3cd;
@@ -216,7 +209,6 @@ body {
     outline: none;
 }
 
-
 .lista-dropdown {
     position: absolute;
     top: 100%;
@@ -278,8 +270,6 @@ body {
     cursor: pointer;
 }
 
-
-
 .modal-botoes-coluna {
     display: flex;
     flex-direction: column;
@@ -334,13 +324,10 @@ body {
     background: #e8e8e8;
 }
 
-
-
 @media (max-width: 768px) {
     .conteudo {
         padding: 15px;
     }
-
 
     .tabela {
         display: block;
@@ -369,6 +356,7 @@ body {
         border: 1px solid #edf2f7;
         position: relative;
         overflow: hidden;
+        transition: all 0.2s ease;
     }
 
     .tabela-linha tr::before {
@@ -381,6 +369,13 @@ body {
         background: var(--primary);
     }
 
+    .tabela-linha tr:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        background-color: #ffffff !important;
+        z-index: 1;
+    }
+
     .tabela-linha td {
         display: flex;
         padding: 8px 0;
@@ -389,7 +384,6 @@ body {
         justify-content: flex-start;
         text-align: left;
     }
-
 
     .tabela-linha td[data-label="Paciente"] {
         font-size: 18px;
@@ -405,7 +399,6 @@ body {
         margin-right: 8px;
         font-size: 16px;
     }
-
 
     .tabela-linha td[data-label="Especialidade"],
     .tabela-linha td[data-label="Médico"],
@@ -435,7 +428,6 @@ body {
         margin-right: 6px;
     }
 
-
     .tabela-linha td[data-label="Status"] {
         position: absolute;
         top: 20px;
@@ -447,7 +439,6 @@ body {
     .tabela-linha td[data-label="Status"]::before {
         content: "";
     }
-
 
     .tabela-linha td[data-label="Ações"] {
         margin-top: 10px;
@@ -462,7 +453,6 @@ body {
         color: #718096;
         flex: 1;
     }
-
 
     .btn.cancelar {
         background: none;
@@ -491,18 +481,373 @@ body {
     .btn.marcar {
         width: 100%;
         height: 55px;
+        background: var(--primary);
+        color: white;
+        border: none;
         border-radius: 15px;
         font-size: 16px;
+        font-weight: bold;
+        padding: 12px 25px;
+        cursor: pointer;
+        margin-top: 20px;
+        transition: 0.3s;
         box-shadow: 0 10px 20px rgba(0, 123, 255, 0.2);
     }
 
+    .btn.marcar:hover {
+        background: var(--primary-dark);
+    }
+
+    .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(4px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2000;
+    }
 
     .modal-caixa {
+        background: var(--white);
         width: calc(100% - 40px);
         margin: 20px;
         padding: 30px 20px;
         max-height: 85vh;
         overflow-y: auto;
         border-radius: 24px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .fechar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+    }
+
+    .modal-caixa h3 {
+        font-size: 20px;
+        color: var(--text-main);
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .modal-caixa p {
+        font-size: 15px;
+        color: var(--text-muted);
+        text-align: center;
+        line-height: 1.5;
+    }
+
+    .campo-selecao-customizado {
+        position: relative;
+        margin-bottom: 18px;
+    }
+
+    .campo-selecao-customizado label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: 700;
+        font-size: 14px;
+    }
+
+    .campo-selecao-customizado input {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        font-size: 15px;
+        transition: border-color 0.3s;
+    }
+
+    .campo-selecao-customizado input:focus {
+        border-color: var(--primary);
+        outline: none;
+    }
+
+    .lista-dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-top: none;
+        max-height: 180px;
+        overflow-y: auto;
+        z-index: 50;
+        list-style: none;
+        border-radius: 0 0 10px 10px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .lista-dropdown li {
+        padding: 12px 15px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: 0.2s;
+    }
+
+    .lista-dropdown li:hover {
+        background: #f0f7ff;
+        color: var(--primary);
+        padding-left: 20px;
+    }
+
+    .oculta {
+        display: none;
+    }
+
+    .modal-rodape {
+        display: flex;
+        gap: 12px;
+        margin-top: 25px;
+    }
+
+    .btn-primario {
+        flex: 2;
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 14px;
+        border-radius: 10px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .btn-secundario {
+        flex: 1;
+        background: #f1f3f5;
+        color: #495057;
+        border: none;
+        padding: 14px;
+        border-radius: 10px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .modal-botoes-coluna {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 25px;
+        width: 100%;
+    }
+
+    .modal-botoes-coluna button {
+        width: 100%;
+        padding: 15px;
+        border-radius: 12px;
+        font-weight: 700;
+        font-size: 15px;
+        cursor: pointer;
+        border: none;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .btn-resgatar {
+        background: var(--primary);
+        color: white;
+    }
+
+    .btn-resgatar:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px);
+    }
+
+    .btn-cancelar-modal {
+        background: #fff1f0;
+        color: #cf1322;
+        border: 1px solid #ffa39e !important;
+    }
+
+    .btn-cancelar-modal:hover {
+        background: #ff4d4f;
+        color: white;
+        transform: translateY(-2px);
+    }
+
+    .btn-voltar {
+        background: #f5f5f5;
+        color: #595959;
+    }
+
+    .btn-voltar:hover {
+        background: #e8e8e8;
+    }
+}
+
+@media screen and (width >= 1300px) {
+    .conteudo {
+        padding: 3rem;
+    }
+
+    .tabela {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        margin-top: 20px;
+        background: #fff;
+        border-radius: 12px 12px 0 0;
+        overflow: hidden;
+        display: table;
+    }
+
+    .tabela-titulo {
+        background-color: #007bff;
+        color: white;
+        display: table-header-group;
+    }
+
+    .tabela-titulo th {
+        padding: 15px;
+        text-align: left;
+        font-weight: 700;
+        font-size: 1.4rem;
+    }
+
+    .tabela-titulo th:first-child {
+        border-top-left-radius: 12px;
+    }
+
+    .tabela-titulo th:last-child {
+        border-top-right-radius: 12px;
+    }
+
+    .tabela-linha {
+        display: table-row-group;
+        gap: initial;
+    }
+
+    .tabela-linha tr {
+        display: table-row;
+        background: none;
+        border-radius: 0;
+        padding: 0;
+        box-shadow: none;
+        border: none;
+        position: static;
+        overflow: visible;
+        transition: all 0.2s ease;
+    }
+
+    .tabela-linha tr::before {
+        display: none;
+    }
+
+    .tabela-linha tr:nth-child(even) {
+        background-color: #f8fbff;
+    }
+
+    .tabela-linha tr:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        background-color: #ffffff !important;
+        z-index: 1;
+    }
+
+    .tabela-linha td {
+        display: table-cell;
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+        color: #444;
+        width: auto;
+        text-align: left;
+        justify-content: initial;
+    }
+
+    .tabela-linha td[data-label]::before {
+        content: none;
+    }
+
+    .tabela-linha td[data-label="Paciente"] {
+        font-size: inherit;
+        font-weight: inherit;
+        color: inherit;
+        padding: 15px;
+        margin: 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    .tabela-linha td[data-label="Especialidade"],
+    .tabela-linha td[data-label="Médico"],
+    .tabela-linha td[data-label="Data"] {
+        font-size: inherit;
+        color: inherit;
+    }
+
+    .tabela-linha td[data-label="Status"] {
+        position: static;
+        width: auto;
+        padding: 15px;
+    }
+
+    .tabela-linha td[data-label="Ações"] {
+        margin-top: 0;
+        padding: 15px;
+        border-top: none;
+        justify-content: flex-start;
+    }
+
+    .btn.cancelar {
+        font-size: 18px;
+        display: inline;
+        align-items: initial;
+        justify-content: initial;
+        background: none;
+        border: none;
+        color: #ff4d4f;
+        cursor: pointer;
+        transition: all 0.2s;
+        font-weight: 900;
+        padding: 5px;
+    }
+
+    .btn.cancelar:hover {
+        color: #cf1322;
+        transform: scale(1.2);
+    }
+
+    .btn.cancelar .cat-icone {
+        font-size: 1.1rem;
+        font-weight: inherit;
+    }
+
+    .btn.marcar {
+        width: auto;
+        height: auto;
+        border-radius: 8px;
+        font-size: 1.2rem;
+        box-shadow: none;
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 20px;
+        transition: 0.3s;
+    }
+
+    .btn.marcar:hover {
+        background: var(--primary-dark);
+    }
+
+    .modal-caixa {
+        width: 480px;
+        margin: 0;
+        padding: 30px;
+        max-height: none;
+        overflow-y: visible;
+        border-radius: 20px;
     }
 }

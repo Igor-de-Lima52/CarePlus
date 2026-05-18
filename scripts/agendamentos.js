@@ -89,11 +89,6 @@ const pacientes = [
 ];
 
 
-
-
-
-
-
 function configurarBuscaDropdown(idInput, idLista, dadosParaFiltrar, acaoAposClique) {
     const campo = document.getElementById(idInput);
     const lista = document.getElementById(idLista);

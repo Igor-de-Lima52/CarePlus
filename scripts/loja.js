@@ -4,24 +4,7 @@
 
 // ---------- USUÁRIO LOGADO ----------
 
-const currentAccount = getLoggedAccount();
-
-if (!currentAccount) {
-    window.location.href = 'index.html';
-} else {
-    document.getElementById('user-name').textContent = currentAccount.name;
-    document.getElementById('user-points').textContent = currentAccount.pontos.toLocaleString('pt-BR') + ' pts';
-    document.getElementById('topbar-points').textContent = '⭐ ' + currentAccount.pontos.toLocaleString('pt-BR') + ' pts';
-
-    const pontos = currentAccount.pontos;
-    let tier = 'Membro Bronze';
-    if (pontos >= 5000) tier = 'Membro Gold';
-    else if (pontos >= 1000) tier = 'Membro Prata';
-    document.getElementById('user-tier').textContent = tier;
-}
-
-function sair() {
-    clearSession();
+if (!getLoggedAccount()) {
     window.location.href = 'index.html';
 }
 
@@ -165,8 +148,7 @@ function resgatarItem() {
   account.pontos -= currentItem.preco;
   setCookie('careplus_accounts', accounts, 30);
 
-  document.getElementById('user-points').textContent = account.pontos.toLocaleString('pt-BR') + ' pts';
-  document.getElementById('topbar-points').textContent = '⭐ ' + account.pontos.toLocaleString('pt-BR') + ' pts';
+  refreshPontos();
 
   fecharModal();
   mostrarAviso('✅ Item resgatado!');
@@ -179,13 +161,6 @@ function fecharModal() {
 modal.addEventListener("click", (e) => {
   if (e.target === modal) fecharModal();
 });
-
-// ---------- SIDEBAR ----------
-
-function setAtivo(elemento) {
-  document.querySelectorAll(".menu-item").forEach(item => item.classList.remove("ativo"));
-  elemento.classList.add("ativo");
-}
 
 // ---------- TOAST ----------
 
