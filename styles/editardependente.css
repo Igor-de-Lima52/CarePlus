@@ -34,50 +34,30 @@
 }
 
 .form-group label {
-  font-size: 1.6rem;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.4rem;
   font-weight: 700;
-  color: #000;
+  color: var(--gray-700, #374151);
 }
 
-.form-group input {
+.form-group input, .form-group select {
   width: 100%;
-  height: 5rem;
+  height: 4.8rem;
   padding: 0 1.6rem;
-  border: 1px solid #000;
-  border-radius: 6px;
-  background: var(--input-bg);
-  font-family: 'Montserrat', sans-serif;
+  border: 1px solid #c8d3e2;
+  border-radius: 10px;
+  background: #f8fafc;
+  font-family: 'Nunito', 'Poppins', sans-serif;
   font-size: 1.4rem;
-  color: #000;
-  opacity: 0.6;
+  color: #1e293b;
   outline: none;
-  transition: border-color 0.2s, opacity 0.2s;
+  transition: all 0.2s ease;
 }
 
-.form-group select {
-  width: 100%;
-  height: 5rem;
-  padding: 0 1.6rem;
-  border: 1px solid #000;
-  border-radius: 6px;
-  background: var(--input-bg);
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.4rem;
-  color: #000;
-  opacity: 0.6;
-  outline: none;
-  cursor: pointer;
-  appearance: auto;
-}
-
-.form-group select:focus {
-  border: 2px solid var(--azul-perfil);
-  opacity: 1;
-}
-
-.form-group input:focus {
-  border: 2px solid var(--azul-perfil);
-  opacity: 1;
+.form-group input:focus, .form-group select:focus {
+  border-color: var(--blue, #1a6fc4);
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(26, 111, 196, 0.15);
 }
 
 .form-row {
@@ -98,49 +78,56 @@
 }
 
 .btn-editar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  height: 50px;
-  background: var(--azul-perfil);
+  height: 4.8rem;
+  background: linear-gradient(135deg, var(--blue-dark, #0a4fa8) 0%, var(--blue-mid, #2d8cdb) 100%);
   color: #fff;
   border: none;
-  border-radius: 6px;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 16px;
-  font-weight: 600;
+  border-radius: 10px;
+  font-family: 'Nunito', 'Poppins', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
   cursor: pointer;
-  box-shadow: 0px 4px 3.5px rgba(0, 0, 0, 0.25);
-  transition: background 0.2s, transform 0.1s;
+  box-shadow: 0 4px 14px rgba(10, 79, 168, .20);
+  transition: all 0.2s ease;
 }
 
 .btn-editar:hover {
-  background: #005fa3;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(10, 79, 168, .30);
 }
 
 .btn-editar:active {
-  transform: scale(0.98);
+  transform: translateY(1px);
 }
 
 .btn-cancelar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  height: 50px;
-  background: #fff;
-  color: var(--azul-perfil);
-  border: none;
-  border-radius: 6px;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 16px;
-  font-weight: 600;
+  height: 4.8rem;
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  font-family: 'Nunito', 'Poppins', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
   cursor: pointer;
-  box-shadow: 0px 4px 3.5px rgba(0, 0, 0, 0.25);
-  transition: background 0.2s, transform 0.1s;
+  transition: all 0.15s ease;
 }
 
 .btn-cancelar:hover {
-  background: #f5f5f5;
+  background: #e2e8f0;
+  color: #1e293b;
 }
 
 .btn-cancelar:active {
-  transform: scale(0.98);
+  transform: translateY(1px);
 }
 
 @media screen and (width >= 390px) {

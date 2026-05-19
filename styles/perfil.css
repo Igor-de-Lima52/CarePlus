@@ -2,16 +2,30 @@
   padding: 1.6rem;
   display: flex;
   flex-direction: column;
-  gap: 1.6rem;
+  gap: 2.4rem;
   width: 100%;
   min-width: 0;
 }
 
-.perfil-titulo {
-  font-family: 'Montserrat', sans-serif;
+.perfil-card {
+  background: var(--white, #ffffff);
+  border-radius: 14px;
+  box-shadow: 0 4px 24px rgba(10, 79, 168, .10);
+  padding: 1.8rem 2.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.perfil-titulo-secao {
+  font-family: 'Nunito', 'Poppins', sans-serif;
   font-size: 1.8rem;
-  font-weight: 600;
-  color: #000;
+  font-weight: 800;
+  color: var(--gray-900, #1a1f2e);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .perfil-topo {
@@ -19,145 +33,272 @@
   align-items: center;
   justify-content: space-between;
   gap: 1.2rem;
+  flex-wrap: wrap;
 }
 
 .btn-adicionar-dep {
-  width: 20rem;
-  height: 50px;
-  background: #0079c8;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: auto;
+  height: auto;
+  background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-mid) 100%);
   color: #fff;
   border: none;
-  border-radius: 6px;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.4rem;
-  font-weight: 600;
+  border-radius: 10px;
+  font-family: 'Nunito', 'Poppins', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  padding: 1rem 2rem;
   cursor: pointer;
-  box-shadow: 0 4px 3.5px rgba(0, 0, 0, 0.25);
-  transition: background 0.2s;
+  box-shadow: 0 4px 14px rgba(10, 79, 168, .20);
+  transition: transform .15s, box-shadow .15s;
 }
 
 .btn-adicionar-dep:hover {
-  background: #005fa3;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(10, 79, 168, .30);
 }
 
+/* ── FORMS ── */
+.form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  width: 100%;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.form-group label {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--gray-700, #374151);
+}
+
+.form-group input, .form-group select {
+  width: 100%;
+  height: 4.2rem;
+  padding: 0 1.4rem;
+  border: 1px solid #c8d3e2;
+  border-radius: 10px;
+  background: #f8fafc;
+  font-family: 'Nunito', 'Poppins', sans-serif;
+  font-size: 1.3rem;
+  color: #1e293b;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.form-group input:focus, .form-group select:focus {
+  border-color: var(--blue);
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(26, 111, 196, 0.15);
+}
+
+.form-group input:disabled {
+  background: #e2e8f0;
+  color: #64748b;
+  cursor: not-allowed;
+  border-color: #cbd5e1;
+  opacity: 0.85;
+}
+
+.form-row {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.form-row .form-group {
+  flex: 1;
+  min-width: 200px;
+}
+
+.btn-salvar-dados {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-mid) 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Nunito', 'Poppins', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  transition: transform .15s, box-shadow .15s;
+  box-shadow: 0 4px 14px rgba(10, 79, 168, .20);
+  width: auto;
+  align-self: flex-start;
+  margin-top: 1rem;
+}
+
+.btn-salvar-dados:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(10, 79, 168, .30);
+}
+
+/* ── TABELA DEPENDENTES ── */
 .tabela-wrapper {
   width: 100%;
-  overflow-x: scroll;
+  overflow-x: auto;
   border-radius: 10px;
-  -webkit-overflow-scrolling: touch;
+  box-shadow: 0 2px 12px rgba(10, 79, 168, .05);
 }
 
 .tabela-dependentes {
   width: 100%;
   min-width: 600px;
   border-collapse: collapse;
-  font-family: 'Montserrat', sans-serif;
-  background: #e8ebef;
+  font-family: 'Nunito', sans-serif;
+  background: #ffffff;
 }
 
 .tabela-dependentes thead tr {
-  background: #ab47bc;
+  background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-mid) 100%);
 }
 
 .tabela-dependentes thead th {
   color: #fff;
-  font-size: 1.6rem;
-  font-weight: 600;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .5px;
   text-align: center;
-  padding: 1.2rem 0.8rem;
+  padding: 1.4rem 0.8rem;
+}
+
+.tabela-dependentes thead th:first-child {
+  text-align: left;
+  padding-left: 2rem;
 }
 
 .tabela-dependentes tbody tr {
-  border-bottom: 1px solid #0079c8;
+  border-bottom: 1px solid var(--gray-100, #f3f5f8);
+  transition: background .15s;
+}
+
+.tabela-dependentes tbody tr:last-child {
+  border-bottom: none;
+}
+
+.tabela-dependentes tbody tr:hover {
+  background: #fafbff;
 }
 
 .tabela-dependentes tbody td {
-  padding: 1.2rem 0.8rem;
+  padding: 1.4rem 0.8rem;
   font-size: 1.4rem;
-  font-weight: 500;
-  color: #000;
+  font-weight: 600;
+  color: var(--gray-700, #374151);
   vertical-align: middle;
   text-align: center;
+}
+
+.tabela-dependentes tbody td:first-child {
+  text-align: left;
+  padding-left: 2rem;
 }
 
 .tabela-dependentes .col-acoes {
   display: flex;
   flex-direction: row;
-  gap: 0.4rem;
+  gap: 0.6rem;
   justify-content: center;
   align-items: center;
 }
 
 .btn-editar-dep {
-  width: 38px;
-  height: 38px;
-  background: #54da71;
-  color: #000;
+  width: 34px;
+  height: 34px;
+  background: none;
+  color: var(--primary, #1a6fc4);
   border: none;
   border-radius: 8px;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.2s;
+  transition: all 0.2s;
 }
 
 .btn-editar-dep:hover {
-  background: #3cbf56;
+  background: #f0f7ff;
+  color: var(--primary-dark, #0a4fa8);
+  transform: translateY(-1px);
 }
 
 .btn-deletar-dep {
-  width: 38px;
-  height: 38px;
-  background: #da5454;
-  color: #fff;
+  width: 34px;
+  height: 34px;
+  background: none;
+  color: var(--red, #e74c3c);
   border: none;
   border-radius: 8px;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.2s;
+  transition: all 0.2s;
 }
 
 .btn-deletar-dep:hover {
-  background: #c03a3a;
+  background: var(--red-light, #fdecea);
+  color: #cf1322;
+  transform: translateY(-1px);
 }
 
 .perfil-rodape {
   display: flex;
-  justify-content: stretch;
+  justify-content: flex-start;
+  margin-top: 1rem;
 }
 
 .btn-editar-senha {
-  width: 20rem;
-  height: 50px;
-  background: #0079c8;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.4rem;
-  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  font-family: 'Nunito', 'Poppins', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  padding: 1rem 2rem;
   cursor: pointer;
-  box-shadow: 0 4px 3.5px rgba(0, 0, 0, 0.25);
-  transition: background 0.2s;
+  transition: all 0.15s;
 }
 
 .btn-editar-senha:hover {
-  background: #005fa3;
+  background: #e2e8f0;
+  color: #1e293b;
+}
+
+.separador-secao {
+  height: 1px;
+  background: var(--gray-100, #f3f5f8);
+  margin: 1rem 0;
 }
 
 @media screen and (width >= 768px) {
   .conteudo-perfil {
     padding: 2rem 3.2rem;
-    gap: 2.4rem;
+    gap: 2.2rem;
   }
 
-  .perfil-titulo {
-    font-size: 2.4rem;
+  .perfil-titulo-secao {
+    font-size: 2rem;
   }
 
   .perfil-topo {
@@ -166,45 +307,16 @@
     align-items: center;
   }
 
-  .tabela-wrapper {
-    overflow: hidden;
-  }
-
   .btn-adicionar-dep {
-    width: 30rem;
-    font-size: 1.6rem;
-  }
-
-  .tabela-dependentes {
-    min-width: auto;
+    font-size: 1.3rem;
   }
 
   .tabela-dependentes thead th {
-    font-size: 2rem;
-    padding: 1.6rem 1.2rem;
+    font-size: 1.3rem;
   }
 
   .tabela-dependentes tbody td {
-    padding: 1.6rem 1.2rem;
-    font-size: 1.8rem;
-  }
-
-  .perfil-rodape {
-    justify-content: flex-start;
-  }
-
-  .btn-editar-senha {
-    width: 30rem;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
   }
 }
 
-@media screen and (width >= 1024px) {
-  .tabela-dependentes thead th {
-    font-size: 2rem;
-  }
-
-  .tabela-dependentes tbody td {
-    font-size: 1.8rem;
-  }
-}

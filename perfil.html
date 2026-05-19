@@ -33,38 +33,84 @@
     </div>
 
     <div class="conteudo-perfil">
-      <div class="perfil-topo">
-        <h1 class="perfil-titulo">Dependentes</h1>
-        <button class="btn-adicionar-dep" onclick="window.location.href='adicionardependente.html'">Adicionar dependente</button>
+      
+      <!-- CARD MEUS DADOS -->
+      <div class="perfil-card">
+        <h2 class="perfil-titulo-secao">👤 Meus Dados</h2>
+        <form id="form-meus-dados" class="form-grid">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="perfil-nome">Nome:</label>
+              <input id="perfil-nome" type="text" placeholder="Seu nome completo" required />
+            </div>
+            <div class="form-group">
+              <label for="perfil-email">Email:</label>
+              <input id="perfil-email" type="email" placeholder="Seu email" required disabled />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="perfil-cpf">CPF:</label>
+              <input id="perfil-cpf" type="text" placeholder="Seu CPF" required disabled />
+            </div>
+            <div class="form-group">
+              <label for="perfil-peso">Peso:</label>
+              <input id="perfil-peso" type="text" placeholder="Seu peso (ex: 75)" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="perfil-sexo">Sexo:</label>
+              <select id="perfil-sexo" required>
+                <option value="">Selecione</option>
+                <option value="Mas">Mas</option>
+                <option value="Fem">Fem</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="perfil-idade">Idade:</label>
+              <input id="perfil-idade" type="text" inputmode="numeric" placeholder="Sua idade" required />
+            </div>
+          </div>
+          <button type="submit" class="btn-salvar-dados">💾 Salvar Alterações</button>
+        </form>
       </div>
 
-      <div class="tabela-wrapper">
-        <table class="tabela-dependentes">
-          <colgroup>
-            <col style="width: 30%">
-            <col style="width: 10%">
-            <col style="width: 10%">
-            <col style="width: 25%">
-            <col style="width: 10%">
-            <col style="width: 15%">
-          </colgroup>
-          <thead>
-            <tr>
-              <th>Nome</th>
-              <th>Peso</th>
-              <th>Sexo</th>
-              <th>CPF</th>
-              <th>Idade</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-          <tbody>
-          </tbody>
-        </table>
+      <!-- CARD DEPENDENTES -->
+      <div class="perfil-card">
+        <div class="perfil-topo">
+          <h2 class="perfil-titulo-secao">👥 Dependentes</h2>
+          <button class="btn-adicionar-dep" onclick="window.location.href='adicionardependente.html'">➕ Adicionar Dependente</button>
+        </div>
+
+        <div class="tabela-wrapper">
+          <table class="tabela-dependentes">
+            <colgroup>
+              <col style="width: 30%">
+              <col style="width: 10%">
+              <col style="width: 10%">
+              <col style="width: 25%">
+              <col style="width: 10%">
+              <col style="width: 15%">
+            </colgroup>
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Peso</th>
+                <th>Sexo</th>
+                <th>CPF</th>
+                <th>Idade</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
       </div>
 
       <div class="perfil-rodape">
-        <button class="btn-editar-senha" onclick="window.location.href='editarsenha.html'" >Editar senha</button>
+        <button class="btn-editar-senha" onclick="window.location.href='editarsenha.html'" >🔑 Editar senha</button>
       </div>
     </div>
   </main>

@@ -256,7 +256,7 @@
         }
 
         thead {
-            background: var(--purple);
+            background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-mid) 100%);
         }
 
         thead th {
@@ -266,6 +266,10 @@
             text-transform: uppercase;
             letter-spacing: .5px;
             padding: 1.4rem 1.8rem;
+            text-align: center;
+        }
+
+        thead th:first-child {
             text-align: left;
         }
 
@@ -286,6 +290,11 @@
             padding: 1.4rem 1.8rem;
             font-size: 1.4rem;
             color: var(--gray-700);
+            text-align: center;
+        }
+
+        tbody td:first-child {
+            text-align: left;
         }
 
         .badge {

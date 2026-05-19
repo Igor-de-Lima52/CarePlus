@@ -1,6 +1,6 @@
     :root {
-        --primary: #007bff;
-        --primary-dark: #0056b3;
+        --primary: #1a6fc4;
+        --primary-dark: #0a4fa8;
         --bg-light: #f8f9fa;
         --text-main: #333;
         --text-muted: #666;
@@ -153,22 +153,49 @@
     }
 
     .btn.marcar {
-        width: 100%;
-        height: 55px;
-        background: var(--primary);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: auto;
+        height: auto;
+        background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-mid) 100%);
         color: white;
         border: none;
-        border-radius: 15px;
-        font-size: 16px;
-        font-weight: bold;
-        padding: 12px 25px;
+        border-radius: 10px;
+        font-family: 'Nunito', 'Poppins', sans-serif;
+        font-size: 1.3rem;
+        font-weight: 700;
+        padding: 1rem 2rem;
         cursor: pointer;
-        margin-top: 20px;
-        transition: 0.3s;
-        box-shadow: 0 10px 20px rgba(0, 123, 255, 0.2);
+        transition: transform .15s, box-shadow .15s, background .15s;
+        box-shadow: 0 4px 14px rgba(10, 79, 168, .20);
+        margin: 0;
     }
 
-    .btn.marcar:hover { background: var(--primary-dark); }
+    .btn.marcar:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(10, 79, 168, .30);
+    }
+
+    .section-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        gap: 15px;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    .section-header h2 {
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--gray-900, #1a1f2e);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
 
     .modal-overlay {
         position: fixed;
@@ -358,20 +385,21 @@
     }
 
     .tabela-titulo {
-        background-color: #007bff;
+        background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-mid) 100%);
         color: white;
         display: table-header-group;
     }
 
     .tabela-titulo th {
         padding: 15px;
-        text-align: left;
+        text-align: center;
         font-weight: 700;
         font-size: 1.4rem;
     }
 
     .tabela-titulo th:first-child {
         border-top-left-radius: 12px;
+        text-align: left;
     }
 
     .tabela-titulo th:last-child {
@@ -414,48 +442,51 @@
         display: table-cell;
         padding: 15px;
         border-bottom: 1px solid #eee;
-        color: #444;
+        color: var(--gray-700, #374151);
         width: auto;
-        text-align: left;
+        text-align: center;
         justify-content: initial;
+        font-size: 1.4rem;
     }
 
     .tabela-linha td[data-label]::before { content: none; }
 
     .tabela-linha td[data-label="Paciente"] {
-        font-size: inherit;
-        font-weight: inherit;
-        color: inherit;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--gray-900, #1a1f2e);
         padding: 15px;
         margin: 0;
         border-bottom: 1px solid #eee;
+        text-align: left;
     }
 
     .tabela-linha td[data-label="Especialidade"],
     .tabela-linha td[data-label="Médico"],
     .tabela-linha td[data-label="Data"] {
-        font-size: inherit;
-        color: inherit;
+        font-size: 1.4rem;
+        color: var(--gray-700, #374151);
+        text-align: center;
     }
 
     .tabela-linha td[data-label="Status"] {
         position: static;
         width: auto;
         padding: 15px;
+        text-align: center;
     }
 
     .tabela-linha td[data-label="Ações"] {
         margin-top: 0;
         padding: 15px;
         border-top: none;
-        justify-content: flex-start;
+        justify-content: center;
+        text-align: center;
     }
 
     .btn.cancelar {
         font-size: 18px;
-        display: inline;
-        align-items: initial;
-        justify-content: initial;
+        display: inline-block;
         background: none;
         border: none;
         color: #ff4d4f;
@@ -463,6 +494,7 @@
         transition: all 0.2s;
         font-weight: 900;
         padding: 5px;
+        margin: 0 auto;
     }
 
     .btn.cancelar:hover {
@@ -476,22 +508,12 @@
     }
 
     .btn.marcar {
-        width: auto;
-        height: auto;
-        border-radius: 8px;
-        font-size: 1.2rem;
-        box-shadow: none;
-        background: var(--primary);
-        color: white;
-        border: none;
-        padding: 12px 25px;
-        font-weight: bold;
-        cursor: pointer;
-        margin-top: 20px;
-        transition: 0.3s;
+        margin: 0;
     }
 
-    .btn.marcar:hover { background: var(--primary-dark); }
+    .btn.marcar:hover {
+        transform: translateY(-2px);
+    }
 
     .modal-caixa {
         width: 480px;
