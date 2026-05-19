@@ -283,3 +283,105 @@
     justify-content: space-between;
   }
 }
+
+@media (max-width: 768px) {
+
+  .categorias {
+    display: flex;
+    overflow-x: auto;
+    gap: 1.2rem;
+
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+
+    padding-bottom: .4rem;
+
+    scrollbar-width: none;
+  }
+
+  .categorias::-webkit-scrollbar {
+    display: none;
+  }
+
+  .categorias button {
+    min-width: 24rem;
+    flex: 0 0 auto;
+
+    scroll-snap-align: start;
+  }
+}
+
+@media (max-width: 768px) {
+
+  /* OFERTAS */
+  .oferta-grid {
+    display: flex;
+    overflow-x: auto;
+    gap: 1.4rem;
+
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+
+    scrollbar-width: none;
+    padding-bottom: .4rem;
+  }
+
+  .oferta-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .oferta-grid > * {
+    min-width: 30rem;
+    flex: 0 0 auto;
+
+    scroll-snap-align: start;
+  }
+
+  /* CUPONS */
+  .cupons-grid {
+    display: flex;
+    overflow-x: auto;
+    gap: 1.4rem;
+
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+
+    scrollbar-width: none;
+    padding-bottom: .4rem;
+  }
+
+  .cupons-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .card-cupom {
+    min-width: 24rem;
+    flex: 0 0 auto;
+
+    scroll-snap-align: start;
+  }
+
+  /* PRODUTOS */
+  .produtos-grid {
+    display: flex;
+    overflow-x: auto;
+    gap: 1.4rem;
+
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+
+    scrollbar-width: none;
+    padding-bottom: .4rem;
+  }
+
+  .produtos-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .produtos-grid .card {
+    min-width: 20rem;
+    flex: 0 0 auto;
+
+    scroll-snap-align: start;
+  }
+}

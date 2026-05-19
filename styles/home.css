@@ -399,3 +399,28 @@
         .modal-close:hover {
             background: var(--blue);
         }
+
+@media (max-width: 768px) {
+    .stats-grid {
+        display: flex;
+        overflow-x: auto;
+        gap: 1.4rem;
+        padding-bottom: .8rem;
+
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+
+        scrollbar-width: none;
+    }
+
+    .stats-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .stat-card {
+        min-width: 28rem;
+        flex: 0 0 auto;
+
+        scroll-snap-align: start;
+    }
+}

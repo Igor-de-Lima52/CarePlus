@@ -76,22 +76,22 @@ document.addEventListener('DOMContentLoaded', function () {
     const account = getLoggedAccount();
 
     if (account) {
-    // Adiciona o titular
-    pacientes.push({
-        id: account.email,
-        nome: account.name
-    });
+        pacientes.push({
+            id: account.email,
+            nome: account.name
+        });
 
-    // Adiciona os dependentes
-    if (account.dependentes && account.dependentes.length > 0) {
-        const dependentesFormatados = account.dependentes.map(dep => ({
-        id: dep.id,
-        nome: dep.nome
-        }));
+        if (account.dependentes && account.dependentes.length > 0) {
+            const dependentesFormatados = account.dependentes.map(dep => ({
+            id: dep.id,
+            nome: dep.nome
+            }));
 
-        pacientes.push(...dependentesFormatados);
+            pacientes.push(...dependentesFormatados);
+        }
     }
-    }
+
+    carregarConsultas();
 });
 
 function configurarBuscaDropdown(idInput, idLista, dadosParaFiltrar, acaoAposClique) {
@@ -259,4 +259,55 @@ function salvarAgendamento() {
     
     fecharModalMarcarConsulta();
     resetarCampos(['paciente-input', 'especialidade-input', 'clinica-input', 'data-input', 'medico-input']);
+}
+
+function carregarConsultas() {
+
+    const account = getLoggedAccount();
+
+    if (!account || !account.consultas) return;
+
+    const tbody = document.querySelector(".tabela-linha");
+
+    tbody.innerHTML = '';
+
+    account.consultas.forEach(consulta => {
+
+        const novaLinha = document.createElement("tr");
+
+        novaLinha.innerHTML = `
+            <td data-label="Paciente">
+                ${consulta.paciente}
+            </td>
+
+            <td data-label="Especialidade">
+                ${consulta.especialidade}
+            </td>
+
+            <td data-label="Médico">
+                ${consulta.medico}
+            </td>
+
+            <td data-label="Data">
+                ${consulta.data}
+            </td>
+
+            <td data-label="Status">
+                <span class="status-marcado">
+                    ${consulta.status}
+                </span>
+            </td>
+
+            <td data-label="Ações">
+                <button 
+                    class="btn cancelar" 
+                    onclick="abrirModalOpcoes('${consulta.paciente}', this)"
+                >
+                    <span class="cat-icone">✕</span>
+                </button>
+            </td>
+        `;
+
+        tbody.appendChild(novaLinha);
+    });
 }
