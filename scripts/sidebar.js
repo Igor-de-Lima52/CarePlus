@@ -3,7 +3,6 @@ const SIDEBAR_ITEMS = [
   { label: 'Home', icon: '🏠', route: 'home.html' },
   { label: 'Agendamentos', icon: '📅', route: 'agendamentos.html' },
   { label: 'Prêmios', icon: '🏪', route: 'loja.html' },
-  { label: 'Ranking', icon: '🏆', route: 'ranking.html' },
 ];
 
 function getCurrentRoute() {

@@ -70,23 +70,29 @@ const diasDisponiveis = [
   { id: 530, data: "24/05/2026", medicoId: 15, clinicaId: 104 }
 ];
 
-const pacientes = [
-  { id: 1, nome: "Ana Beatriz" },
-  { id: 2, nome: "Lucas Ferreira" },
-  { id: 3, nome: "Mariana Alves" },
-  { id: 4, nome: "Pedro Henrique" },
-  { id: 5, nome: "Juliana Martins" },
-  { id: 6, nome: "Carlos Eduardo" },
-  { id: 7, nome: "Fernanda Souza" },
-  { id: 8, nome: "Ricardo Lima" },
-  { id: 9, nome: "Patrícia Gomes" },
-  { id: 10, nome: "Gabriel Costa" },
-  { id: 11, nome: "Amanda Rocha" },
-  { id: 12, nome: "Thiago Almeida" },
-  { id: 13, nome: "Vanessa Santos" },
-  { id: 14, nome: "Bruno Oliveira" },
-  { id: 15, nome: "Larissa Mendes" }
-];
+let pacientes = [];
+
+document.addEventListener('DOMContentLoaded', function () {
+    const account = getLoggedAccount();
+
+    if (account) {
+    // Adiciona o titular
+    pacientes.push({
+        id: account.email,
+        nome: account.name
+    });
+
+    // Adiciona os dependentes
+    if (account.dependentes && account.dependentes.length > 0) {
+        const dependentesFormatados = account.dependentes.map(dep => ({
+        id: dep.id,
+        nome: dep.nome
+        }));
+
+        pacientes.push(...dependentesFormatados);
+    }
+    }
+});
 
 function configurarBuscaDropdown(idInput, idLista, dadosParaFiltrar, acaoAposClique) {
     const campo = document.getElementById(idInput);
@@ -212,6 +218,26 @@ function salvarAgendamento() {
         alert("⚠️ Preencha todos os campos antes de confirmar.");
         return;
     }
+
+    const account = getLoggedAccount();
+
+    if (!account.consultas) {
+        account.consultas = [];
+    }
+
+    const novaConsulta = {
+        id: Date.now(),
+        paciente,
+        especialidade,
+        medico,
+        data,
+        status: 'Marcado'
+    };
+
+    account.consultas.push(novaConsulta);
+
+    updateAccount(account);
+
 
     const tbody = document.querySelector(".tabela-linha");
     const novaLinha = document.createElement("tr");

@@ -222,46 +222,16 @@ nav { width: 100%; }
 .btn-sair:hover { background: var(--azul-escuro); }
 
 @media screen and (width >= 768px) {
-  .perfil-header {
-    display: flex;
-    align-items: center;
-    gap: 1.6rem;
-  }
-
-  .perfil-foto .avatar-placeholder {
-    width: 6rem;
-    height: 6rem;
-    background: var(--input-bg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 4rem;
-    border: 1px solid #000;
-    flex-shrink: 0;
-  }
-
-  .perfil-nome-plano h2 {
-    font-size: 2.2rem;
-    font-weight: 600;
-    color: #000;
-    margin: 0;
-    line-height: 1.2;
-  }
-
-  .perfil-nome-plano span {
-    font-size: 2rem;
-    font-weight: 600;
-    color: #000;
-    display: block;
-    margin-top: 0.4rem;
-  }
-
   .sidebar {
     width: 34rem;
   }
 }
 
 @media screen and (width >= 1300px) {
+  .topbar {
+    justify-content: flex-end;
+  }
+
   .menu-item {
     font-size: 1.6rem;
   }

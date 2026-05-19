@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Care Plus – Home</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="stylesheet" href="styles/sidebar.css" />
+    <link rel="stylesheet" href="styles/topbar.css" />
+    <link rel="stylesheet" href="styles/home.css" />
+</head>
+
+<body>
+
+    <!-- ══ SIDEBAR ══ -->
+    <div id="sidebar-container"></div>
+
+    <!-- ══ MAIN ══ -->
+    <main class="principal">
+
+        <!-- TOP BAR -->
+        <div class="topbar">
+            <button class="btn-hamburger" onclick="toggleSidebar()">☰</button>
+            <div class="topbar-direita">
+                <div class="pontos-topo" id="topbar-points">⭐ 0 pts</div>
+                <button class="btn-sair" onclick="sair()">↪ Sair</button>
+            </div>
+        </div>
+
+        <!-- CONTENT -->
+        <div class="content">
+
+            <!-- NEXT APPOINTMENT -->
+            <!-- <div class="next-appointment">
+                <div class="appt-text">
+                    <h2>Próxima Consulta</h2>
+                    <p>Em 4 horas</p>
+                    <small>Check-up Geral · Clínica Vila Olímpia · Dr. Lorene</small>
+                </div>
+                <div class="appt-icons">
+                    <div class="appt-icon-card">
+                        <span class="icon">🌧️</span>
+                        <span>Clima</span>
+                    </div>
+                    <div class="appt-icon-card">
+                        <span class="icon">📍</span>
+                        <span>Rota</span>
+                    </div>
+                    <button class="calc-btn" onclick="openModal()">
+                        🗺️ Calcular Rota!
+                    </button>
+                </div>
+            </div> -->
+
+            <!-- STATS -->
+            <!-- <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">✅</div>
+                    <div class="stat-info">
+                        <p>Consultas realizadas</p>
+                        <h3>15</h3>
+                        <small>Histórico total</small>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⚠️</div>
+                    <div class="stat-info">
+                        <p>Agend. não comparecidas</p>
+                        <h3>3</h3>
+                        <small>Com aviso prévio</small>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🗒️</div>
+                    <div class="stat-info">
+                        <p>Canceladas c/ aviso</p>
+                        <h3>2</h3>
+                        <small>Cancelamentos</small>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">❌</div>
+                    <div class="stat-info">
+                        <p>Canceladas s/ aviso</p>
+                        <h3>0</h3>
+                        <small>Sem cancelamentos</small>
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- TABLE -->
+            <div class="section-header">
+                <h2>📋 Atividade do Plano</h2>
+                <button class="see-all-btn">Ver tudo</button>
+            </div>
+
+            <div class="table-card">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Peso</th>
+                            <th>Idade</th>
+                            <th>Sexo</th>
+                            <th>Consulta Marcada</th>
+                            <th>Data da Consulta</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="patient-name">Amanda Pitt</div>
+                                <div class="patient-meta">Dependente</div>
+                            </td>
+                            <td>67 kg</td>
+                            <td>47</td>
+                            <td>Fem</td>
+                            <td>Check-up Geral</td>
+                            <td>13 Nov</td>
+                            <td><span class="badge badge-agendado">Agendado</span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="patient-name">Luiza Pitt</div>
+                                <div class="patient-meta">Dependente</div>
+                            </td>
+                            <td>27 kg</td>
+                            <td>13</td>
+                            <td>Fem</td>
+                            <td>Coleta de Sangue</td>
+                            <td>19 Out</td>
+                            <td><span class="badge badge-realizado">Realizado</span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="patient-name">Brad Pitt</div>
+                                <div class="patient-meta">Titular</div>
+                            </td>
+                            <td>78 kg</td>
+                            <td>52</td>
+                            <td>Masc</td>
+                            <td>Odonto</td>
+                            <td>15 Set</td>
+                            <td><span class="badge badge-realizado">Realizado</span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="patient-name">James Pitt</div>
+                                <div class="patient-meta">Dependente</div>
+                            </td>
+                            <td>36 kg</td>
+                            <td>13</td>
+                            <td>Masc</td>
+                            <td>Coleta de Sangue</td>
+                            <td>12 Ago</td>
+                            <td><span class="badge badge-realizado">Realizado</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- MODAL ROTA -->
+    <div class="modal-overlay" id="routeModal">
+        <div class="modal">
+            <h3>📍 Calcular Rota</h3>
+            <p>Clínica Vila Olímpia — Dr. Lorene</p>
+            <div class="modal-map">🗺️</div>
+            <button class="modal-close" onclick="closeModal()">Fechar</button>
+        </div>
+    </div>
+
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/sidebar.js"></script>
+    <script src="scripts/home.js"></script>
+</body>
+
+</html>

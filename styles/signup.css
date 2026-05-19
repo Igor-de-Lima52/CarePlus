@@ -1,6 +1,6 @@
 body {
   font-family: 'Montserrat', sans-serif;
-  background-color: #ffffff;
+  background-color: var(--white);
   display: flex;
   justify-content: center;
   align-items: center;
